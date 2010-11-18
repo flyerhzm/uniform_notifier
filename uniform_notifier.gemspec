@@ -13,6 +13,9 @@ Gem::Specification.new do |s|
   s.description = %q{TODO: Write a gem description}
 
   s.rubyforge_project = "uniform_notifier"
+  
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "ruby-growl"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
