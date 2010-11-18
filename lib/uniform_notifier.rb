@@ -1,0 +1,3 @@
+module UniformNotifier
+  # Your code goes here...
+end
