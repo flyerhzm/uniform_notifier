@@ -6,7 +6,7 @@ uniform_notifier is extracted from [bullet][0], it gives you the ability to send
 Install
 -------
 
-* install directly
+### install directly
 
     gem install uniform_notifier
 
@@ -15,7 +15,7 @@ Install
     gem install ruby-growl
     gem install xmpp4r
 
-* add it into Gemfile (Bundler)
+### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
