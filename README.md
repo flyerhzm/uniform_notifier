@@ -6,25 +6,27 @@ uniform_notifier is extracted from [bullet][0], it gives you the ability to send
 Install
 -------
 
-1. install directly
+* install directly
 
     gem install uniform_notifier
 
-if you want to notify by growl or xmpp, you should install them first
+  if you want to notify by growl or xmpp, you should install them first
 
     gem install ruby-growl
     gem install xmpp4r
 
-2. add it into Gemfile (Bundler)
+* add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
-you should add ruby-growl and xmpp4r gem if you want.
+  you should add ruby-growl and xmpp4r gem if you want.
 
 Usage
 -----
 
-There are two types of notifications, one is <code>inline_notify</code>, for javascript alert and javascript console notifiers, which returns a string and will be combined, the other is <code>out_of_channel_notify</code>, for rails logger, customized logger, growl and xmpp, which doesn't return anything, just send the message to the notifiers.
+There are two types of notifications,
+one is <code>inline_notify</code>, for javascript alert and javascript console notifiers, which returns a string and will be combined,
+the other is <code>out_of_channel_notify</code>, for rails logger, customized logger, growl and xmpp, which doesn't return anything, just send the message to the notifiers.
 
 By default, all notifiers are disabled, you should enable them first.
 
