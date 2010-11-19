@@ -33,7 +33,7 @@ By default, all notifiers are disabled, you should enable them first.
     # javascript alert
     UniformNotifier.alert = true
 
-    # javascript console
+    # javascript console (Safari/Webkit browsers or Firefox w/Firebug installed)
     UniformNotifier.console = true
 
     # rails logger
@@ -50,9 +50,9 @@ By default, all notifiers are disabled, you should enable them first.
     UniformNotifier.growl = { :password => 'growl password' }
 
     # xmpp
-    UniformNotifier.xmpp = { :account => 'bullets_account@jabber.org',
-                             :password => 'bullets_password_for_jabber',
-                             :receiver => 'your_account@jabber.org',
+    UniformNotifier.xmpp = { :account => 'sender_account@jabber.org',
+                             :password => 'password_for_jabber',
+                             :receiver => 'recipient_account@jabber.org',
                              :show_online_status => true }
 
 After that, you can enjoy the notifiers, that's cool!
@@ -69,5 +69,33 @@ After that, you can enjoy the notifiers, that's cool!
     end
     javascript_str = responses.join("\n")
 
+Growl Support
+-------------
+
+To get Growl support up-and-running, follow the steps below:
+
+* Install the ruby-growl gem: <code>gem install ruby-growl</code>
+* Open the Growl preference pane in Systems Preferences
+* Click the "Network" tab
+* Make sure both "Listen for incoming notifications" and "Allow remote application registration" are checked. *Note*: If you set a password, you will need to set <code>UniformNotifier.growl_password = { :password => 'growl password' }</code> in the config file.
+* Restart Growl ("General" tab -> Stop Growl -> Start Growl)
+* Boot up your application. UniformNotifier will automatically send a Growl notification when Growl is turned on. If you do not see it when your application loads, make sure it is enabled in your initializer and double-check the steps above.
+
+### Ruby 1.9 issue
+
+ruby-growl gem has an issue about md5 in ruby 1.9, if you use growl and ruby 1.9, check this [gist][1]
+
+XMPP/Jabber Support
+-------------------
+
+To get XMPP support up-and-running, follow the steps below:
+
+* Install the xmpp4r gem: <code>gem install xmpp4r</code>
+* Make both the sender and the recipient account add each other as contacts.
+  This will require you to manually log into both accounts, add each other
+  as contact and confirm each others contact request.
+* Boot up your application. UniformNotifier will automatically send an XMPP notification when XMPP is turned on.
+
 
 [0]: https://github.com/flyerhzm/bullet
+[1]: https://gist.github.com/300184
