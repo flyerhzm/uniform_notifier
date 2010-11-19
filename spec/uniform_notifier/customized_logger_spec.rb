@@ -1,7 +1,11 @@
 require "spec_helper"
 
 describe UniformNotifier::CustomizedLogger do
-  it "should notify to rails logger" do
+  it "should not notify to customized logger" do
+    UniformNotifier::CustomizedLogger.out_of_channel_notify("notify rails logger").should be_nil
+  end
+
+  it "should notify to customized logger" do
     logger = File.open( 'test.log', 'a+' )
     logger.sync = true
 

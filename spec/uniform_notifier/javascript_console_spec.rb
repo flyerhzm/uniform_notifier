@@ -1,6 +1,10 @@
 require "spec_helper"
 
 describe UniformNotifier::JavascriptConsole do
+  it "should not notify message" do
+    UniformNotifier::JavascriptConsole.inline_notify("javascript console!").should be_nil
+  end
+
   it "should notify message" do
     UniformNotifier.console = true
     UniformNotifier::JavascriptConsole.inline_notify("javascript console!").should == <<-CODE

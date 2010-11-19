@@ -5,7 +5,7 @@ module UniformNotifier
     end
 
     def self.inline_notify( message )
-      return '' unless active?
+      return unless active?
 
       code = <<-CODE
 if (typeof(console) !== 'undefined' && console.log) {

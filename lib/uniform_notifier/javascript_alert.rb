@@ -5,7 +5,7 @@ module UniformNotifier
     end
 
     def self.inline_notify( message )
-      return '' unless self.active?
+      return unless self.active?
 
       wrap_js_association "alert( #{message.inspect} );"
     end

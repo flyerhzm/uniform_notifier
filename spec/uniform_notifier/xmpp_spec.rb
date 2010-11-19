@@ -2,6 +2,9 @@ require 'spec_helper'
 require 'xmpp4r'
 
 describe UniformNotifier::Xmpp do
+  it "should not notify xmpp" do
+    UniformNotifier::Xmpp.out_of_channel_notify("notify xmpp").should be_nil
+  end
 
   it "should notify xmpp without online status" do
     jid = double("jid")

@@ -3,6 +3,10 @@ require 'ruby-growl'
 
 describe UniformNotifier::Growl do
 
+  it "should not notify growl" do
+    UniformNotifier::Growl.out_of_channel_notify('notify growl').should be_nil
+  end
+
   it "should notify growl without password" do
     growl = double('growl')
     Growl.should_receive(:new).with('localhost', 'uniform_notifier', ['uniform_notifier'], nil, nil).and_return(growl)
