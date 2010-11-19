@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "uniform_notifier"
   s.version     = UniformNotifier::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Richard Huang"]
+  s.email       = ["flyerhzm@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/uniform_notifier"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{uniform notifier for rails logger, customized logger, javascript alert, javascript console, growl and xmpp}
+  s.description = %q{uniform notifier for rails logger, customized logger, javascript alert, javascript console, growl and xmpp}
 
   s.rubyforge_project = "uniform_notifier"
 
