@@ -1,13 +1,12 @@
 module UniformNotifier
   class RailsLogger < Base
     def self.active?
-      UniformNotifer.rails_logger
+      UniformNotifier.rails_logger
     end
 
-    def self.out_of_channel_notify( notice )
+    def self.out_of_channel_notify( message )
       return unless active?
-      Rails.logger.warn ''
-      Rails.logger.warn notice.full_notice
+      Rails.logger.warn message
     end
   end
 end
