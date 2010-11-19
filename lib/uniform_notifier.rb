@@ -16,7 +16,7 @@ module UniformNotifier
     end
 
     def xmpp=(xmpp)
-      UniformNotifier::Growl.setup_connection(xmpp)
+      UniformNotifier::Xmpp.setup_connection(xmpp)
     end
   end
 end

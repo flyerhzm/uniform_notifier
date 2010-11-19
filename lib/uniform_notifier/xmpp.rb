@@ -8,9 +8,9 @@ module UniformNotifier
       @xmpp
     end
 
-    def self.out_of_channel_notify( notice )
+    def self.out_of_channel_notify( message )
       return unless active?
-      notify( notice.standard_notice )
+      notify( message )
     end
 
     def self.setup_connection( xmpp_information )
@@ -22,9 +22,9 @@ module UniformNotifier
       @show_online_status = xmpp_information[:show_online_status]
 
       connect
-    rescue MissingSourceFile
+    rescue LoadError
       @xmpp = nil
-      raise NotificationError.new( 'You must install the xmpp4r gem to use XMPP notifications: `gem install xmpp4r`' )
+      raise NotificationError.new( 'You must install the xmpp4r gem to use XMPP notification: `gem install xmpp4r`' )
     end
 
     private
@@ -39,16 +39,12 @@ module UniformNotifier
       def self.notify( message )
         message = Jabber::Message.new( @receiver, message ).
                                   set_type( :normal ).
-                                  set_id( '1' ).
-                                  set_subject( 'Bullet Notification' )
+                                  set_subject( 'Uniform Notifier' )
         @xmpp.send( message )
       end
 
       def self.presence_status
-        project_name = Rails.root.basename.to_s.camelcase
-        time = Time.now
-
-        Jabber::Presence.new.set_status( "Bullet in project '#{project_name}' started on #{time}" )
+        Jabber::Presence.new.set_status( "Uniform Notifier started on #{Time.now}" )
       end
   end
 end

@@ -19,7 +19,7 @@ module UniformNotifier
       notify 'Uniform Notifier Growl has been turned on'
     rescue LoadError
       @growl = nil
-      raise NotificationError.new( 'You must install the ruby-growl gem to use Growl notifications: `gem install ruby-growl`' )
+      raise NotificationError.new( 'You must install the ruby-growl gem to use Growl notification: `gem install ruby-growl`' )
     end
 
     private
