@@ -12,6 +12,12 @@ module UniformNotifier
   class <<self
     attr_accessor :alert, :console, :growl, :rails_logger, :xmpp
 
+    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger]
+
+    def active_notifiers
+      NOTIFIERS.select { |notifier| notifier.active? }
+    end
+
     def growl=(growl)
       UniformNotifier::Growl.setup_connection(growl)
     end
