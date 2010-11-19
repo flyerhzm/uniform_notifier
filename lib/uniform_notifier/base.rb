@@ -3,13 +3,13 @@ module UniformNotifier
     def self.active?
       false
     end
-    
-    def wrap_js_association( message )
-      %{ 
-        <script type="text/javascript">/*<![CDATA[*/
-        #{message}
-        /*]]>*/</script>
-      }
+
+    def self.wrap_js_association( message )
+      <<-CODE
+<script type="text/javascript">/*<![CDATA[*/
+#{message}
+/*]]>*/</script>
+      CODE
     end
   end
 end

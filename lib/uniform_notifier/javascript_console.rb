@@ -4,21 +4,20 @@ module UniformNotifier
       UniformNotifier.console
     end
 
-    def self.inline_notify( notice )
+    def self.inline_notify( message )
       return '' unless active?
 
       code = <<-CODE
-        if (typeof(console) !== 'undefined') {
-          if (console.groupCollapsed && console.groupEnd && console.log) {
-            console.groupCollapsed(#{notice.title.inspect});
-            console.log(#{notice.body_with_caller.inspect});
-            console.groupEnd();
-
-          } else if (console.log) {
-            console.log(#{notice.full_notice.inspect});
-          }
-        }
-      CODE
+if (typeof(console) !== 'undefined' && console.log) {
+  if (console.groupCollapsed && console.groupEnd) {
+    console.groupCollapsed(#{"Uniform Notifier".inspect});
+    console.log(#{message.inspect});
+    console.groupEnd();
+  } else {
+    console.log(#{message.inspect});
+  }
+}
+CODE
 
       wrap_js_association code
     end

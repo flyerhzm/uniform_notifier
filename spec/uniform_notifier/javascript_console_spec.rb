@@ -1,0 +1,21 @@
+require "spec_helper"
+
+describe UniformNotifier::JavascriptConsole do
+  it "should notify message" do
+    UniformNotifier.console = true
+    UniformNotifier::JavascriptConsole.inline_notify("javascript console!").should == <<-CODE
+<script type="text/javascript">/*<![CDATA[*/
+if (typeof(console) !== 'undefined' && console.log) {
+  if (console.groupCollapsed && console.groupEnd) {
+    console.groupCollapsed(#{"Uniform Notifier".inspect});
+    console.log(#{"javascript console!".inspect});
+    console.groupEnd();
+  } else {
+    console.log(#{"javascript console!".inspect});
+  }
+}
+
+/*]]>*/</script>
+    CODE
+  end
+end
