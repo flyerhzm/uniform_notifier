@@ -58,7 +58,7 @@ By default, all notifiers are disabled, you should enable them first.
 After that, you can enjoy the notifiers, that's cool!
 
     # the notify message will be notified to rails logger, customized logger, growl or xmpp.
-    UniformNotifier.active_notfiiers.out_of_channel_notify(notify_message)
+    UniformNotifier.active_notifiers.out_of_channel_notify(notify_message)
 
     # the notify message will be wrapped by <script type="text/javascript">...</script>,
     # you should append the javascript_str at the bottom of http response body.
