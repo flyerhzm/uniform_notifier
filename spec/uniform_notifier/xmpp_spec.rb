@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'xmpp4r'
 
 describe UniformNotifier::Xmpp do
   it "should not notify xmpp" do

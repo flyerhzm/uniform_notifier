@@ -14,6 +14,8 @@ module UniformNotifier
     end
 
     def self.setup_connection( xmpp_information )
+      return unless xmpp_information
+
       require 'xmpp4r'
 
       @receiver = xmpp_information[:receiver]

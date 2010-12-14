@@ -12,8 +12,9 @@ module UniformNotifier
     end
 
     def self.setup_connection( growl )
+      return unless growl
       require 'ruby-growl'
-      @password = growl == true ? nil : growl[:password]
+      @password = growl.instance_of?(Hash) ? growl[:password] : nil
       @growl = connect
 
       notify 'Uniform Notifier Growl has been turned on'

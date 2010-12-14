@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'ruby-growl'
 
 describe UniformNotifier::Growl do
 

@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "uniform_notifier"
 
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "ruby-growl"
-  s.add_development_dependency "xmpp4r"
+  s.add_development_dependency "ruby-growl", "3.0"
+  s.add_development_dependency "xmpp4r", "0.5"
+  s.add_development_dependency "rspec", "1.3.1"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
