@@ -18,6 +18,7 @@ module UniformNotifier
 
       require 'xmpp4r'
 
+      @xmpp = xmpp_information
       @receiver = xmpp_information[:receiver]
       @password = xmpp_information[:password]
       @account  = xmpp_information[:account]
