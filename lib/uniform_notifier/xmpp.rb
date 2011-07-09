@@ -18,12 +18,14 @@ module UniformNotifier
 
       require 'xmpp4r'
 
+      @xmpp = xmpp_information
       @receiver = xmpp_information[:receiver]
       @password = xmpp_information[:password]
       @account  = xmpp_information[:account]
       @show_online_status = xmpp_information[:show_online_status]
+      @stay_connected = xmpp_information[:stay_connected].nil? ? true : xmpp_information[:stay_connected]
 
-      connect
+      connect if @stay_connected
     rescue LoadError
       @xmpp = nil
       raise NotificationError.new( 'You must install the xmpp4r gem to use XMPP notification: `gem install xmpp4r`' )
@@ -39,6 +41,7 @@ module UniformNotifier
       end
 
       def self.notify( message )
+        connect unless @stay_connected
         message = Jabber::Message.new( @receiver, message ).
                                   set_type( :normal ).
                                   set_subject( 'Uniform Notifier' )
