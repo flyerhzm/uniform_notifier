@@ -76,7 +76,8 @@ Growl Support
 
 To get Growl support up-and-running, follow the steps below:
 
-* Install the ruby-growl gem: <code>gem install ruby-growl</code>
+* For Growl < v1.3, install the ruby-growl gem: <code>gem install ruby-growl</code>
+* For Growl v1.3+, install the ruby_gntp gem: <code>gem install ruby_gntp</code>
 * Open the Growl preference pane in Systems Preferences
 * Click the "Network" tab
 * Make sure both "Listen for incoming notifications" and "Allow remote application registration" are checked. *Note*: If you set a password, you will need to set <code>UniformNotifier.growl_password = { :password => 'growl password' }</code> in the config file.
