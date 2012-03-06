@@ -35,7 +35,7 @@ module UniformNotifier
       notify 'Uniform Notifier Growl has been turned on'
     end
 
-    def self.setup_connection_growl( growl )
+    def self.setup_connection_gntp( growl )
       return unless growl
       require 'ruby_gntp'
       @password = growl.instance_of?(Hash) ? growl[:password] : nil
@@ -50,10 +50,9 @@ module UniformNotifier
 
     private
       def self.notify( message )
-        case @growl
-        when Growl
+        if defined?(::Growl) && @growl.is_a?(::Growl)
           @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )
-        when GNTP
+        elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
           @growl.notify({
                           :name  => 'uniform_notifier',
                           :title => 'Uniform Notifier',
