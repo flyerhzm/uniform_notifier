@@ -10,16 +10,23 @@ Install
 
     gem install uniform_notifier
 
-  if you want to notify by growl or xmpp, you should install them first
+if you want to notify by growl < v1.3, you should install ruby-growl first
 
     gem install ruby-growl
+
+if you want to notify by growl v1.3+, you should install ruby_gntp first
+
+    gem install ruby_gntp
+
+if you want to notify by xmpp, you should install xmpp4r first
+
     gem install xmpp4r
 
 ### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
-  you should add ruby-growl and xmpp4r gem if you want.
+  you should add ruby-growl, ruby_gntp, or xmpp4r gem if you want.
 
 Usage
 -----
