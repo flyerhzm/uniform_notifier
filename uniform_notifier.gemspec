@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "ruby-growl", "3.0"
   s.add_development_dependency "ruby_gntp", "0.3.4"
   s.add_development_dependency "xmpp4r", "0.5"
-  s.add_development_dependency "rspec", "2.3.0"
+  s.add_development_dependency "rspec"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
