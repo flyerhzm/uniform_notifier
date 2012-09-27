@@ -6,7 +6,8 @@ module UniformNotifier
 
     def self.out_of_channel_notify(message)
       return unless active?
-      Airbrake.notify(message)
+      exception = Exception.new(message)
+      Airbrake.notify(exception)
     end
   end
 end
