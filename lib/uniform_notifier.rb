@@ -5,14 +5,15 @@ require 'uniform_notifier/growl'
 require 'uniform_notifier/xmpp'
 require 'uniform_notifier/rails_logger'
 require 'uniform_notifier/customized_logger'
+require 'uniform_notifier/airbrake'
 
 module UniformNotifier
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp
+    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake
 
-    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger]
+    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier]
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }

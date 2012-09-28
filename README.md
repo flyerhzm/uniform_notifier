@@ -1,7 +1,7 @@
 UniformNotifier
 ===============
 
-uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, and xmpp.
+uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp and airbrake.
 
 Install
 -------
@@ -22,11 +22,15 @@ if you want to notify by xmpp, you should install xmpp4r first
 
     gem install xmpp4r
 
+if you want to notify by airbrake, you should install airbrake first
+
+    gem install airbrake
+
 ### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
-  you should add ruby-growl, ruby_gntp, or xmpp4r gem if you want.
+  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake gem if you want.
 
 Usage
 -----
@@ -45,6 +49,9 @@ By default, all notifiers are disabled, you should enable them first.
 
     # rails logger
     UniformNotifier.rails_logger = true
+
+    # airbrake
+    UniformNotifier.airbrake = true
 
     # customized logger
     logger = File.open('notify.log', 'a+')
