@@ -73,7 +73,7 @@ After that, you can enjoy the notifiers, that's cool!
 
     # the notify message will be notified to rails logger, customized logger, growl or xmpp.
     UniformNotifier.active_notifiers.each do |notifier|
-      notifier.out_of_channel_notify(args.join("\n"))
+      notifier.out_of_channel_notify("customize message")
     end
 
     # the notify message will be wrapped by <script type="text/javascript">...</script>,
@@ -81,7 +81,7 @@ After that, you can enjoy the notifiers, that's cool!
     # for more information, please check https://github.com/flyerhzm/bullet/blob/master/lib/bullet/rack.rb
     responses = []
     UniformNotifier.active_notifiers.each do |notifier|
-      responses << notifier.inline_notify(notify_message)
+      responses << notifier.inline_notify("customize message")
     end
     javascript_str = responses.join("\n")
 
