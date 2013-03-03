@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "uniform_notifier"
 
-  s.add_development_dependency %q<ruby-growl>, ["= 3.0"]
+  s.add_development_dependency %q<ruby-growl>, ["= 4.0"]
   s.add_development_dependency %q<ruby_gntp>, ["= 0.3.4"]
   s.add_development_dependency %q<xmpp4r>, ["= 0.5"]
   s.add_development_dependency %q<rspec>, ["> 0"]

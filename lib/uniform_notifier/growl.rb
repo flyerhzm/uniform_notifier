@@ -26,11 +26,9 @@ module UniformNotifier
       return unless growl
       require 'ruby-growl'
       @password = growl.instance_of?(Hash) ? growl[:password] : nil
-      @growl = ::Growl.new('localhost',
-                           'uniform_notifier',
-                           [ 'uniform_notifier' ],
-                           nil,
-                           @password)
+      @growl = ::Growl.new 'localhost', 'uniform_notifier'
+      @growl.add_notification 'uniform_notifier'
+      @growl.password = @password
 
       notify 'Uniform Notifier Growl has been turned on'
     end
