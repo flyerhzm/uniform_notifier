@@ -33,7 +33,7 @@ describe UniformNotifier::Xmpp do
 
     presence = double("presence")
     now = Time.now
-    Time.stub!(:now).and_return(now)
+    Time.stub(:now).and_return(now)
     Jabber::Presence.should_receive(:new).and_return(presence)
     presence.should_receive(:set_status).with("Uniform Notifier started on #{now}").and_return(presence)
     xmpp.should_receive(:send).with(presence)
