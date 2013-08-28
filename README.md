@@ -69,6 +69,14 @@ By default, all notifiers are disabled, you should enable them first.
                              :receiver => 'recipient_account@jabber.org',
                              :show_online_status => true }
 
+    # raise an error
+    UniformNotifier.raise = true # raise a generic exception
+
+    class MyExceptionClass < Exception; end
+    UniformNotifier.raise = MyExceptionClass # raise a custom exception type
+
+    UniformNotifier.raise = false # don't raise errors
+
 After that, you can enjoy the notifiers, that's cool!
 
     # the notify message will be notified to rails logger, customized logger, growl or xmpp.
