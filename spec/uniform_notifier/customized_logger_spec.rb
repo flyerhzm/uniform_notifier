@@ -10,7 +10,7 @@ describe UniformNotifier::CustomizedLogger do
     logger.sync = true
 
     now = Time.now
-    Time.stub!(:now).and_return(now)
+    Time.stub(:now).and_return(now)
     UniformNotifier.customized_logger = logger
     UniformNotifier::CustomizedLogger.out_of_channel_notify("notify rails logger")
 
