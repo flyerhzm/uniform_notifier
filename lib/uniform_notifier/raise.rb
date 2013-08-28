@@ -3,13 +3,17 @@ module UniformNotifier
     class UniformNotifierException < Exception; end
 
     def self.active?
-      UniformNotifier.raise
+      @exception_class
     end
 
     def self.inline_notify( message )
       return unless self.active?
 
-      raise UniformNotifierException, message
+      raise @exception_class, message
+    end
+
+    def self.setup_connection(exception_class)
+      @exception_class = exception_class == true ? UniformNotifierException : exception_class
     end
   end
 end

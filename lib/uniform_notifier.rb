@@ -31,5 +31,9 @@ module UniformNotifier
     def customized_logger=(logdev)
       UniformNotifier::CustomizedLogger.setup(logdev)
     end
+
+    def raise=(exception_class)
+      UniformNotifier::Raise.setup_connection(exception_class)
+    end
   end
 end

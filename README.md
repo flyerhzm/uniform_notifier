@@ -72,6 +72,9 @@ By default, all notifiers are disabled, you should enable them first.
     # raise an error
     UniformNotifier.raise = true # raise a generic exception
 
+    class MyExceptionClass < Exception; end
+    UniformNotifier.raise = MyExceptionClass # raise a custom exception type
+
     UniformNotifier.raise = false # don't raise errors
 
 After that, you can enjoy the notifiers, that's cool!
