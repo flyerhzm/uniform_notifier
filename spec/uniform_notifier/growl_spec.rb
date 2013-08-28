@@ -8,7 +8,9 @@ describe UniformNotifier::Growl do
 
   it "should notify growl without password" do
     growl = double('growl', :is_a? => true)
-    Growl.should_receive(:new).with('localhost', 'uniform_notifier', ['uniform_notifier'], nil, nil).and_return(growl)
+    Growl.should_receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
+    growl.should_receive(:add_notification).with('uniform_notifier')
+    growl.should_receive(:password=).with(nil)
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on').ordered
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl without password').ordered
 
@@ -18,7 +20,9 @@ describe UniformNotifier::Growl do
 
   it "should notify growl with password" do
     growl = double('growl', :is_a? => true)
-    Growl.should_receive(:new).with('localhost', 'uniform_notifier', ['uniform_notifier'], nil, '123456').and_return(growl)
+    Growl.should_receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
+    growl.should_receive(:add_notification).with('uniform_notifier')
+    growl.should_receive(:password=).with('123456')
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on').ordered
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password').ordered
 
