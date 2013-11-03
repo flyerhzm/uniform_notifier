@@ -6,7 +6,7 @@ module UniformNotifier
       @exception_class
     end
 
-    def self.inline_notify( message )
+    def self.out_of_channel_notify( message )
       return unless self.active?
 
       raise @exception_class, message
