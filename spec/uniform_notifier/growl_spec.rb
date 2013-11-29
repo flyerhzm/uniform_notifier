@@ -29,4 +29,16 @@ describe UniformNotifier::Growl do
     UniformNotifier.growl = { :password => '123456' }
     UniformNotifier::Growl.out_of_channel_notify('notify growl with password')
   end
+
+  it "should notify growl with quiet" do
+    growl = double('growl', :is_a? => true)
+    Growl.should_receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
+    growl.should_receive(:add_notification).with('uniform_notifier')
+    growl.should_receive(:password=).with('123456')
+    growl.should_not_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on')
+    growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password')
+
+    UniformNotifier.growl = { :password => '123456', :quiet => true }
+    UniformNotifier::Growl.out_of_channel_notify('notify growl with password')
+  end
 end

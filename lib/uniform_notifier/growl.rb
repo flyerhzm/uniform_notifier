@@ -30,7 +30,7 @@ module UniformNotifier
       @growl.add_notification 'uniform_notifier'
       @growl.password = @password
 
-      notify 'Uniform Notifier Growl has been turned on' unless growl[:quiet]
+      notify 'Uniform Notifier Growl has been turned on' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
 
     def self.setup_connection_gntp( growl )
@@ -43,7 +43,7 @@ module UniformNotifier
                                             :enabled  => true,
                                           }]})
 
-      notify 'Uniform Notifier Growl has been turned on (using GNTP)' unless growl[:quiet]
+      notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
 
     private
