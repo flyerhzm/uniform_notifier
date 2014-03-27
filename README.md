@@ -26,6 +26,10 @@ if you want to notify by airbrake, you should install airbrake first
 
     gem install airbrake
 
+if you want to notify by bugsnag, you should install bugsnag first
+
+    gem install bugsnag
+
 ### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
@@ -52,6 +56,9 @@ By default, all notifiers are disabled, you should enable them first.
 
     # airbrake
     UniformNotifier.airbrake = true
+
+    # bugsnag
+    UniformNotifier.bugsnag = true
 
     # customized logger
     logger = File.open('notify.log', 'a+')
