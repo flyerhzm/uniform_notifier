@@ -1,7 +1,5 @@
 module UniformNotifier
   class Raise < Base
-    class UniformNotifierException < Exception; end
-
     def self.active?
       @exception_class
     end
@@ -13,7 +11,7 @@ module UniformNotifier
     end
 
     def self.setup_connection(exception_class)
-      @exception_class = exception_class == true ? UniformNotifierException : exception_class
+      @exception_class = exception_class == true ? Exception : exception_class
     end
   end
 end
