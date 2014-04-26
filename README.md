@@ -1,10 +1,8 @@
-UniformNotifier
-===============
+# UniformNotifier
 
 uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp and airbrake.
 
-Install
--------
+## Install
 
 ### install directly
 
@@ -36,8 +34,7 @@ if you want to notify by bugsnag, you should install bugsnag first
 
   you should add ruby-growl, ruby_gntp, xmpp4r, airbrake gem if you want.
 
-Usage
------
+## Usage
 
 There are two types of notifications,
 one is <code>inline_notify</code>, for javascript alert and javascript console notifiers, which returns a string and will be combined,
@@ -100,8 +97,7 @@ After that, you can enjoy the notifiers, that's cool!
     end
     javascript_str = responses.join("\n")
 
-Growl Support
--------------
+## Growl Support
 
 To get Growl support up-and-running, follow the steps below:
 
@@ -117,8 +113,7 @@ To get Growl support up-and-running, follow the steps below:
 
 ruby-growl gem has an issue about md5 in ruby 1.9, if you use growl and ruby 1.9, check this [gist][1]
 
-XMPP/Jabber Support
--------------------
+## XMPP/Jabber Support
 
 To get XMPP support up-and-running, follow the steps below:
 
