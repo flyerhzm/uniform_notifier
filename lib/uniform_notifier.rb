@@ -1,4 +1,5 @@
 require 'uniform_notifier/base'
+require 'uniform_notifier/errors'
 require 'uniform_notifier/javascript_alert'
 require 'uniform_notifier/javascript_console'
 require 'uniform_notifier/growl'

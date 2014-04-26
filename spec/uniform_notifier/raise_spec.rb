@@ -9,7 +9,7 @@ describe UniformNotifier::Raise do
     UniformNotifier.raise = true
     expect {
       UniformNotifier::Raise.out_of_channel_notify("notification")
-    }.to raise_error(UniformNotifier::Raise::UniformNotifierException, "notification")
+    }.to raise_error(UniformNotifier::Exception, "notification")
   end
 
   it "allows the user to override the default exception class" do

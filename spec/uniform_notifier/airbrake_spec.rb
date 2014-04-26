@@ -10,7 +10,7 @@ describe UniformNotifier::AirbrakeNotifier do
   end
 
   it "should notify airbrake" do
-    Airbrake.should_receive(:notify).with(Exception.new("notify airbrake"))
+    Airbrake.should_receive(:notify).with(UniformNotifier::Exception.new("notify airbrake"))
 
     UniformNotifier.airbrake = true
     UniformNotifier::AirbrakeNotifier.out_of_channel_notify("notify airbrake")
