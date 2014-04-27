@@ -4,8 +4,11 @@ module UniformNotifier
       UniformNotifier.rails_logger
     end
 
-    def self.out_of_channel_notify( message )
-      return unless active?
+    protected
+
+    def self._out_of_channel_notify( data )
+      message = data.values.compact.join("\n")
+
       Rails.logger.warn message
     end
   end

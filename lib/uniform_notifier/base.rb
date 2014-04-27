@@ -4,16 +4,36 @@ module UniformNotifier
       false
     end
 
-    def self.inline_notify( message )
+    def self.inline_notify( data )
+      return unless active?
+
+      # For compatibility to the old protocol
+      data = { :title => data } if data.is_a?(String)
+
+      _inline_notify( data )
     end
 
-    def self.out_of_channel_notify( message )
+    def self.out_of_channel_notify( data )
+      return unless active?
+
+      # For compatibility to the old protocol
+      data = { :title => data } if data.is_a?(String)
+
+      _out_of_channel_notify(data)
     end
 
-    def self.wrap_js_association( message )
+    protected
+
+    def self._inline_notify( data )
+    end
+
+    def self._out_of_channel_notify( data )
+    end
+
+    def self.wrap_js_association( code )
       <<-CODE
 <script type="text/javascript">/*<![CDATA[*/
-#{message}
+#{code}
 /*]]>*/</script>
       CODE
     end

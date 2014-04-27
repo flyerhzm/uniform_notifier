@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UniformNotifier::Growl do
 
   it "should not notify growl" do
-    UniformNotifier::Growl.out_of_channel_notify('notify growl').should be_nil
+    UniformNotifier::Growl.out_of_channel_notify(:title => 'notify growl').should be_nil
   end
 
   it "should notify growl without password" do
@@ -15,7 +15,7 @@ describe UniformNotifier::Growl do
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl without password').ordered
 
     UniformNotifier.growl = true
-    UniformNotifier::Growl.out_of_channel_notify('notify growl without password')
+    UniformNotifier::Growl.out_of_channel_notify(:title => 'notify growl without password')
   end
 
   it "should notify growl with password" do
@@ -27,7 +27,7 @@ describe UniformNotifier::Growl do
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password').ordered
 
     UniformNotifier.growl = { :password => '123456' }
-    UniformNotifier::Growl.out_of_channel_notify('notify growl with password')
+    UniformNotifier::Growl.out_of_channel_notify(:title => 'notify growl with password')
   end
 
   it "should notify growl with quiet" do
@@ -39,6 +39,6 @@ describe UniformNotifier::Growl do
     growl.should_receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password')
 
     UniformNotifier.growl = { :password => '123456', :quiet => true }
-    UniformNotifier::Growl.out_of_channel_notify('notify growl with password')
+    UniformNotifier::Growl.out_of_channel_notify(:title => 'notify growl with password')
   end
 end

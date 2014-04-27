@@ -2,12 +2,12 @@ require "spec_helper"
 
 describe UniformNotifier::JavascriptAlert do
   it "should not notify message" do
-    UniformNotifier::JavascriptAlert.inline_notify("javascript alert!").should be_nil
+    UniformNotifier::JavascriptAlert.inline_notify(:title => "javascript alert!").should be_nil
   end
 
   it "should notify message" do
     UniformNotifier.alert = true
-    UniformNotifier::JavascriptAlert.inline_notify("javascript alert!").should == <<-CODE
+    UniformNotifier::JavascriptAlert.inline_notify(:title => "javascript alert!").should == <<-CODE
 <script type="text/javascript">/*<![CDATA[*/
 alert( "javascript alert!" );
 /*]]>*/</script>

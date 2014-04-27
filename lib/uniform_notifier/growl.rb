@@ -6,11 +6,6 @@ module UniformNotifier
       @growl
     end
 
-    def self.out_of_channel_notify( message )
-      return unless active?
-      notify( message )
-    end
-
     def self.setup_connection( growl )
       setup_connection_growl(growl)
     rescue LoadError
@@ -44,6 +39,14 @@ module UniformNotifier
                                           }]})
 
       notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
+    end
+    
+    protected
+
+    def self._out_of_channel_notify( data )
+      message = data.values.compact.join("\n")
+
+      notify( message )
     end
 
     private
