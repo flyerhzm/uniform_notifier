@@ -6,13 +6,13 @@ end
 
 describe UniformNotifier::AirbrakeNotifier do
   it "should not notify airbrake" do
-    UniformNotifier::AirbrakeNotifier.out_of_channel_notify("notify airbrake").should be_nil
+    UniformNotifier::AirbrakeNotifier.out_of_channel_notify(:title => "notify airbrake").should be_nil
   end
 
   it "should notify airbrake" do
     Airbrake.should_receive(:notify).with(UniformNotifier::Exception.new("notify airbrake"))
 
     UniformNotifier.airbrake = true
-    UniformNotifier::AirbrakeNotifier.out_of_channel_notify("notify airbrake")
+    UniformNotifier::AirbrakeNotifier.out_of_channel_notify(:title => "notify airbrake")
   end
 end

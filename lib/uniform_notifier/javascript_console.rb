@@ -4,8 +4,10 @@ module UniformNotifier
       UniformNotifier.console
     end
 
-    def self.inline_notify( message )
-      return unless active?
+    protected
+
+    def self._inline_notify( data )
+      message = data.values.compact.join("\n")
 
       code = <<-CODE
 if (typeof(console) !== 'undefined' && console.log) {

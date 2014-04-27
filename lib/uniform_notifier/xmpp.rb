@@ -8,11 +8,6 @@ module UniformNotifier
       @xmpp
     end
 
-    def self.out_of_channel_notify( message )
-      return unless active?
-      notify( message )
-    end
-
     def self.setup_connection( xmpp_information )
       return unless xmpp_information
 
@@ -29,6 +24,14 @@ module UniformNotifier
     rescue LoadError
       @xmpp = nil
       raise NotificationError.new( 'You must install the xmpp4r gem to use XMPP notification: `gem install xmpp4r`' )
+    end
+
+    protected
+
+    def self._out_of_channel_notify( data )
+      message = data.values.compact.join("\n")
+
+      notify( message )
     end
 
     private

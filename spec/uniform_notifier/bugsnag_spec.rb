@@ -6,13 +6,13 @@ end
 
 describe UniformNotifier::BugsnagNotifier do
   it "should not notify bugsnag" do
-    UniformNotifier::BugsnagNotifier.out_of_channel_notify("notify bugsnag").should be_nil
+    UniformNotifier::BugsnagNotifier.out_of_channel_notify(:title => "notify bugsnag").should be_nil
   end
 
   it "should notify bugsnag" do
     Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new("notify bugsnag"))
 
     UniformNotifier.bugsnag = true
-    UniformNotifier::BugsnagNotifier.out_of_channel_notify("notify bugsnag")
+    UniformNotifier::BugsnagNotifier.out_of_channel_notify(:title => "notify bugsnag")
   end
 end

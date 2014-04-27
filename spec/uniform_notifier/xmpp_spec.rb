@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UniformNotifier::Xmpp do
   it "should not notify xmpp" do
-    UniformNotifier::Xmpp.out_of_channel_notify("notify xmpp").should be_nil
+    UniformNotifier::Xmpp.out_of_channel_notify(:title => "notify xmpp").should be_nil
   end
 
   it "should notify xmpp without online status" do
@@ -20,7 +20,7 @@ describe UniformNotifier::Xmpp do
     xmpp.should_receive(:send).with(message)
 
     UniformNotifier.xmpp = {:account => 'from@gmail.com', :password => '123456', :receiver => 'to@gmail.com', :show_online_status => false}
-    UniformNotifier::Xmpp.out_of_channel_notify('notify xmpp')
+    UniformNotifier::Xmpp.out_of_channel_notify(:title => 'notify xmpp')
   end
 
   it "should notify xmpp with online status" do
@@ -45,6 +45,6 @@ describe UniformNotifier::Xmpp do
     xmpp.should_receive(:send).with(message)
 
     UniformNotifier.xmpp = {:account => 'from@gmail.com', :password => '123456', :receiver => 'to@gmail.com', :show_online_status => true}
-    UniformNotifier::Xmpp.out_of_channel_notify('notify xmpp')
+    UniformNotifier::Xmpp.out_of_channel_notify(:title => 'notify xmpp')
   end
 end
