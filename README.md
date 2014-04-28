@@ -53,9 +53,13 @@ By default, all notifiers are disabled, you should enable them first.
 
     # airbrake
     UniformNotifier.airbrake = true
+    # airbrake with options
+    UniformNotifier.airbrake = { :error_class => Exception }
 
     # bugsnag
     UniformNotifier.bugsnag = true
+    # bugsnag with options
+    UniformNotifier.bugsnag = { :api_key => 'something' }
 
     # customized logger
     logger = File.open('notify.log', 'a+')
