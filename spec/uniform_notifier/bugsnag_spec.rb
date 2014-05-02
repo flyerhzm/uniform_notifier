@@ -5,21 +5,43 @@ class Bugsnag
 end
 
 describe UniformNotifier::BugsnagNotifier do
+  let(:notification_data) { {} }
   it "should not notify bugsnag" do
-    UniformNotifier::BugsnagNotifier.out_of_channel_notify(:title => "notify bugsnag").should be_nil
+    Bugsnag.should_not_receive(:notify)
+    UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
   end
+  context "with string notification" do
+    let(:notification_data) { {:user => 'user', :title => 'notify bugsnag', :url => 'URL', body: 'something'} }
 
-  it "should notify bugsnag" do
-    Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new("notify bugsnag"), {})
+    it "should notify bugsnag" do
+      Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new(notification_data[:title]), :grouping_hash => notification_data[:body], :notification => notification_data)
 
-    UniformNotifier.bugsnag = true
-    UniformNotifier::BugsnagNotifier.out_of_channel_notify(:title => "notify bugsnag")
+      UniformNotifier.bugsnag = true
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
+
+    it "should notify bugsnag with option" do
+      Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new(notification_data[:title]), :foo => :bar, :grouping_hash => notification_data[:body], :notification => notification_data)
+
+      UniformNotifier.bugsnag = { :foo => :bar }
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
   end
+  context "with hash notification" do
+    let(:notification_data) { "notify bugsnag" }
 
-  it "should notify bugsnag with option" do
-    Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new("notify bugsnag"), :foo => :bar)
+    it "should notify bugsnag" do
+      Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new("notify bugsnag"), :grouping_hash => "notify bugsnag", :notification => {:title => "notify bugsnag"})
 
-    UniformNotifier.bugsnag = { :foo => :bar }
-    UniformNotifier::BugsnagNotifier.out_of_channel_notify("notify bugsnag")
+      UniformNotifier.bugsnag = true
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
+
+    it "should notify bugsnag with option" do
+      Bugsnag.should_receive(:notify).with(UniformNotifier::Exception.new("notify bugsnag"), :foo => :bar, :grouping_hash => "notify bugsnag", :notification => {:title => "notify bugsnag"})
+
+      UniformNotifier.bugsnag = { :foo => :bar }
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
   end
 end
