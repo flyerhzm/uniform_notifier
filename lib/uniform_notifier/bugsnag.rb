@@ -15,7 +15,7 @@ module UniformNotifier
       exception = Exception.new(data[:title])
       Bugsnag.notify(exception, opt.merge(
         :grouping_hash => data[:body] || data[:title],
-        :notification => data,
+        :notification => data
       ))
     end
   end
