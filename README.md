@@ -28,11 +28,15 @@ if you want to notify by bugsnag, you should install bugsnag first
 
     gem install bugsnag
 
+if you want to notify by slack, you should install slack-notifier first
+
+    gem install slack-notifier
+
 ### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
-  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake gem if you want.
+  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, slack-notifier gem if you want.
 
 ## Usage
 
@@ -60,6 +64,11 @@ By default, all notifiers are disabled, you should enable them first.
     UniformNotifier.bugsnag = true
     # bugsnag with options
     UniformNotifier.bugsnag = { :api_key => 'something' }
+
+    # slack
+    UniformNotifier.slack = true
+    # slack with options
+    UniformNotifier.slack = { :webhook_url => 'http://some.slack.url', :foo => 'bar' }
 
     # customized logger
     logger = File.open('notify.log', 'a+')
