@@ -20,8 +20,13 @@ module UniformNotifier
     def self.setup_connection_growl( growl )
       return unless growl
       require 'ruby-growl'
-      @password = growl.instance_of?(Hash) ? growl[:password] : nil
-      @growl = ::Growl.new 'localhost', 'uniform_notifier'
+      if growl.instance_of?(Hash)
+        @password = growl.include?(:password) ? growl[:password] : nil
+        @host = growl.include?(:host) ? growl[:host] : 'localhost'
+      end
+      @password ||= nil
+      @host ||= 'localhost'
+      @growl = ::Growl.new @host, 'uniform_notifier'
       @growl.add_notification 'uniform_notifier'
       @growl.password = @password
 
@@ -31,8 +36,13 @@ module UniformNotifier
     def self.setup_connection_gntp( growl )
       return unless growl
       require 'ruby_gntp'
-      @password = growl.instance_of?(Hash) ? growl[:password] : nil
-      @growl = GNTP.new('uniform_notifier', 'localhost', @password, 23053)
+      if growl.instance_of?(Hash)
+        @password = growl.include?(:password) ? growl[:password] : nil
+        @host = growl.include?(:host) ? growl[:host] : 'localhost'
+      end
+      @password ||= nil
+      @host ||= 'localhost'
+      @growl = GNTP.new('uniform_notifier', @host, @password, 23053)
       @growl.register({:notifications => [{
                                             :name     => 'uniform_notifier',
                                             :enabled  => true,
