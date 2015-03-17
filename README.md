@@ -24,6 +24,10 @@ if you want to notify by airbrake, you should install airbrake first
 
     gem install airbrake
 
+if you want to notify by rollbar, you should install rollbar first
+
+    gem install rollbar
+
 if you want to notify by bugsnag, you should install bugsnag first
 
     gem install bugsnag
@@ -59,6 +63,9 @@ By default, all notifiers are disabled, you should enable them first.
     UniformNotifier.airbrake = true
     # airbrake with options
     UniformNotifier.airbrake = { :error_class => Exception }
+
+    # rollbar
+    UniformNotifier.rollbar = true
 
     # bugsnag
     UniformNotifier.bugsnag = true
