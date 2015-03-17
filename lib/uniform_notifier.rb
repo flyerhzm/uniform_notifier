@@ -7,6 +7,7 @@ require 'uniform_notifier/xmpp'
 require 'uniform_notifier/rails_logger'
 require 'uniform_notifier/customized_logger'
 require 'uniform_notifier/airbrake'
+require 'uniform_notifier/rollbar'
 require 'uniform_notifier/bugsnag'
 require 'uniform_notifier/slack'
 require 'uniform_notifier/raise'
@@ -15,7 +16,7 @@ module UniformNotifier
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :bugsnag, :slack, :raise
+    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :rollbar, :bugsnag, :slack, :raise
 
     NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, BugsnagNotifier, Raise, Slack]
 
