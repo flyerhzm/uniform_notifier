@@ -10,14 +10,16 @@ require 'uniform_notifier/airbrake'
 require 'uniform_notifier/bugsnag'
 require 'uniform_notifier/slack'
 require 'uniform_notifier/raise'
+require 'uniform_notifier/json_logger'
+require 'uniform_notifier/html_logger'
 
 module UniformNotifier
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :bugsnag, :slack, :raise
+    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :bugsnag, :slack, :raise, :json_logger, :html_logger
 
-    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, BugsnagNotifier, Raise, Slack]
+    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, BugsnagNotifier, Raise, Slack, JSONLogger, HTMLLogger]
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }
@@ -33,6 +35,14 @@ module UniformNotifier
 
     def customized_logger=(logdev)
       UniformNotifier::CustomizedLogger.setup(logdev)
+    end
+
+    def json_logger=(logdev)
+      UniformNotifier::JSONLogger.setup(logdev)
+    end
+
+    def html_logger=(logdev)
+      UniformNotifier::HTMLLogger.setup(logdev)
     end
 
     def slack=(slack)
