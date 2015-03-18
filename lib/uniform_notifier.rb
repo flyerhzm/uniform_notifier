@@ -18,7 +18,7 @@ module UniformNotifier
   class <<self
     attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :rollbar, :bugsnag, :slack, :raise
 
-    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, BugsnagNotifier, Raise, Slack]
+    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, RollbarNotifier, BugsnagNotifier, Raise, Slack]
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }
