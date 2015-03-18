@@ -1,5 +1,3 @@
-require "spec_helper"
-
 module UniformNotifier
   class HTMLLogger < Base
     @logger = nil
