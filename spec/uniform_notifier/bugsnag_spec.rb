@@ -44,4 +44,13 @@ describe UniformNotifier::BugsnagNotifier do
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
     end
   end
+
+  it "should notify bugsnag with correct backtrace" do
+    Bugsnag.should_receive(:notify) do |error|
+      error.should be_a UniformNotifier::Exception
+      error.backtrace.should eq ["bugsnag spec test"]
+    end
+    UniformNotifier.bugsnag = true
+    UniformNotifier::BugsnagNotifier.out_of_channel_notify(backtrace: ["bugsnag spec test"])
+  end
 end
