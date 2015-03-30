@@ -13,6 +13,7 @@ module UniformNotifier
       end
 
       exception = Exception.new(data[:title])
+      exception.set_backtrace(data[:backtrace]) if data[:backtrace]
       Bugsnag.notify(exception, opt.merge(
         :grouping_hash => data[:body] || data[:title],
         :notification => data
