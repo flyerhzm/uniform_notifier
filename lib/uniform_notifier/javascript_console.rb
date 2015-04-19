@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class JavascriptConsole < Base
     def self.active?
       UniformNotifier.console

@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class Slack < Base
     POSSIBLE_OPTIONS = [:username, :channel]
 

@@ -12,13 +12,17 @@ require 'uniform_notifier/bugsnag'
 require 'uniform_notifier/slack'
 require 'uniform_notifier/raise'
 
-module UniformNotifier
+class UniformNotifier
+  AVAILABLE_NOTIFIERS = [:alert, :console, :growl, :xmpp, :rails_logger, :customized_logger,
+                         :airbrake, :rollbar, :bugsnag, :slack, :raise]
+
+  NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger,
+               AirbrakeNotifier, RollbarNotifier, BugsnagNotifier, Raise, Slack]
+
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor :alert, :console, :growl, :rails_logger, :xmpp, :airbrake, :rollbar, :bugsnag, :slack, :raise
-
-    NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, Xmpp, RailsLogger, CustomizedLogger, AirbrakeNotifier, RollbarNotifier, BugsnagNotifier, Raise, Slack]
+    attr_accessor *AVAILABLE_NOTIFIERS
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }

@@ -1,9 +1,9 @@
-module UniformNotifier
+class UniformNotifier
   class JavascriptAlert < Base
     def self.active?
       UniformNotifier.alert
     end
-    
+
     protected
 
     def self._inline_notify( data )

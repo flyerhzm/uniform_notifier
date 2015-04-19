@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class RollbarNotifier < Base
     def self.active?
       !!UniformNotifier.rollbar

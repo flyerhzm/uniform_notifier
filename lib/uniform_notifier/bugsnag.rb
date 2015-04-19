@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class BugsnagNotifier < Base
     def self.active?
       !!UniformNotifier.bugsnag

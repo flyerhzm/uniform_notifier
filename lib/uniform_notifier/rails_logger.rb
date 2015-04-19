@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class RailsLogger < Base
     def self.active?
       UniformNotifier.rails_logger

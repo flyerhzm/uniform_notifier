@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class Base
     def self.active?
       false

@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class Xmpp < Base
     @receiver = nil
     @xmpp = nil

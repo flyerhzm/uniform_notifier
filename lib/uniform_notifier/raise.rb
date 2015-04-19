@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class Raise < Base
     def self.active?
       @exception_class

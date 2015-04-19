@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class CustomizedLogger < Base
     @logger = nil
 

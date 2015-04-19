@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class Growl < Base
     @growl = nil
 
@@ -50,7 +50,7 @@ module UniformNotifier
 
       notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
-    
+
     protected
 
     def self._out_of_channel_notify( data )

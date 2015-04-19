@@ -1,4 +1,4 @@
-module UniformNotifier
+class UniformNotifier
   class AirbrakeNotifier < Base
     def self.active?
       !!UniformNotifier.airbrake
