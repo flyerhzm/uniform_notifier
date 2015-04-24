@@ -1,6 +1,6 @@
 # UniformNotifier
 
-uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp and airbrake.
+uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp, airbrake and honeybadger.
 
 ## Install
 
@@ -24,6 +24,10 @@ if you want to notify by airbrake, you should install airbrake first
 
     gem install airbrake
 
+if you want to notify by Honeybadger, you should install honeybadger first
+
+    gem install honeybadger
+
 if you want to notify by rollbar, you should install rollbar first
 
     gem install rollbar
@@ -40,7 +44,7 @@ if you want to notify by slack, you should install slack-notifier first
 
     gem "uniform_notifier"
 
-  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, slack-notifier gem if you want.
+  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, honeybadger, slack-notifier gem if you want.
 
 ## Usage
 
@@ -63,6 +67,14 @@ By default, all notifiers are disabled, you should enable them first.
     UniformNotifier.airbrake = true
     # airbrake with options
     UniformNotifier.airbrake = { :error_class => Exception }
+
+    # Honeybadger
+    #
+    # Reporting live data from development is disabled by default. Ensure
+    # that the `report_data` option is enabled via configuration.
+    UniformNotifier.honeybadger = true
+    # Honeybadger with options
+    UniformNotifier.honeybadger = { :error_class => 'Exception' }
 
     # rollbar
     UniformNotifier.rollbar = true
