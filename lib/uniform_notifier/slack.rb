@@ -35,7 +35,7 @@ class UniformNotifier
         end
 
         def notify(message)
-          @slack.ping message
+          @slack.ping "```\n#{message}\n```"
         end
 
         def parse_config(config)
