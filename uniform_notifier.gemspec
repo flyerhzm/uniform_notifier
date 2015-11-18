@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://rubygems.org/gems/uniform_notifier"
   s.summary     = %q{uniform notifier for rails logger, customized logger, javascript alert, javascript console, growl and xmpp}
   s.description = %q{uniform notifier for rails logger, customized logger, javascript alert, javascript console, growl and xmpp}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "uniform_notifier"
 
