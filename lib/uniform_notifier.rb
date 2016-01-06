@@ -23,7 +23,7 @@ class UniformNotifier
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor *AVAILABLE_NOTIFIERS
+    attr_accessor(*AVAILABLE_NOTIFIERS)
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }
