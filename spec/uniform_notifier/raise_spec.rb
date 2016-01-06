@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe UniformNotifier::Raise do
+RSpec.describe UniformNotifier::Raise do
   it "should not notify message" do
-    UniformNotifier::Raise.out_of_channel_notify(:title => "notification").should be_nil
+    expect(UniformNotifier::Raise.out_of_channel_notify(:title => "notification")).to be_nil
   end
 
   it "should raise error of the default class" do

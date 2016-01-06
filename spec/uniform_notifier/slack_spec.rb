@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UniformNotifier::Slack do
+RSpec.describe UniformNotifier::Slack do
   context 'not enabled' do
     it 'should not notify slack' do
       expect_any_instance_of(Slack::Notifier).to_not receive(:ping)
@@ -39,7 +39,7 @@ describe UniformNotifier::Slack do
   end
 
   context 'properly configured' do
-    before(:each) do
+    before(:example) do
       @message = 'notify slack'
       allow_any_instance_of(Slack::Notifier).to receive(:ping).and_return(@message)
     end

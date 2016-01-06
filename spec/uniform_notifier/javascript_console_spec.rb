@@ -1,13 +1,13 @@
 require "spec_helper"
 
-describe UniformNotifier::JavascriptConsole do
+RSpec.describe UniformNotifier::JavascriptConsole do
   it "should not notify message" do
-    UniformNotifier::JavascriptConsole.inline_notify(:title => "javascript console!").should be_nil
+    expect(UniformNotifier::JavascriptConsole.inline_notify(:title => "javascript console!")).to be_nil
   end
 
   it "should notify message" do
     UniformNotifier.console = true
-    UniformNotifier::JavascriptConsole.inline_notify(:title => "javascript console!").should == <<-CODE
+    expect(UniformNotifier::JavascriptConsole.inline_notify(:title => "javascript console!")).to eq <<-CODE
 <script type="text/javascript">/*<![CDATA[*/
 if (typeof(console) !== 'undefined' && console.log) {
   if (console.groupCollapsed && console.groupEnd) {

@@ -4,7 +4,7 @@ class Honeybadger
   # mock Honeybadger
 end
 
-describe UniformNotifier::HoneybadgerNotifier do
+RSpec.describe UniformNotifier::HoneybadgerNotifier do
   it "should not notify honeybadger" do
     expect(UniformNotifier::HoneybadgerNotifier.out_of_channel_notify(:title => "notify honeybadger")).to be_nil
   end
