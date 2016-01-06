@@ -71,5 +71,5 @@ class UniformNotifier
                         })
         end
       end
-    end
   end
+end

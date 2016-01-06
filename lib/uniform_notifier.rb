@@ -23,28 +23,33 @@ class UniformNotifier
   class NotificationError < StandardError; end
 
   class <<self
-    attr_accessor *AVAILABLE_NOTIFIERS
+    attr_accessor(*AVAILABLE_NOTIFIERS)
 
     def active_notifiers
       NOTIFIERS.select { |notifier| notifier.active? }
     end
 
+    undef :growl=
     def growl=(growl)
       UniformNotifier::Growl.setup_connection(growl)
     end
 
+    undef :xmpp=
     def xmpp=(xmpp)
       UniformNotifier::Xmpp.setup_connection(xmpp)
     end
 
+    undef :customized_logger=
     def customized_logger=(logdev)
       UniformNotifier::CustomizedLogger.setup(logdev)
     end
 
+    undef :slack=
     def slack=(slack)
       UniformNotifier::Slack.setup_connection(slack)
     end
 
+    undef :raise=
     def raise=(exception_class)
       UniformNotifier::Raise.setup_connection(exception_class)
     end
