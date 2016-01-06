@@ -1,5 +1,10 @@
 # Next Release
 
+## 1.10.0 (01/06/2016)
+
+* Add honeybadger notifier
+* Eliminate ruby warnings
+
 ## 1.9.0 (04/19/2015)
 
 * Add `UniformNotifier::AVAILABLE_NOTIFIERS` constant
