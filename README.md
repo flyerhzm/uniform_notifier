@@ -87,7 +87,7 @@ By default, all notifiers are disabled, you should enable them first.
     # slack
     UniformNotifier.slack = true
     # slack with options
-    UniformNotifier.slack = { :webhook_url => 'http://some.slack.url', :foo => 'bar' }
+    UniformNotifier.slack = { :webhook_url => 'http://some.slack.url', :channel => '#default', :username => 'notifier' }
 
     # customized logger
     logger = File.open('notify.log', 'a+')
