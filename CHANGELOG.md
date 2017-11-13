@@ -1,5 +1,9 @@
 # Next Release
 
+## 1.11.0 (13/11/2017)
+
+* Add Sentry notifier
+
 ## 1.10.0 (01/06/2016)
 
 * Add honeybadger notifier
