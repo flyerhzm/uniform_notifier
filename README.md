@@ -56,9 +56,15 @@ By default, all notifiers are disabled, you should enable them first.
 
     # javascript alert
     UniformNotifier.alert = true
+    # javascript alert with options
+    # the attributes key adds custom attributes to the script tag appended to the body
+    UniformNotifier.alert = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
 
     # javascript console (Safari/Webkit browsers or Firefox w/Firebug installed)
     UniformNotifier.console = true
+    # javascript console with options
+    # the attributes key adds custom attributes to the script tag appended to the body
+    UniformNotifier.console = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
 
     # rails logger
     UniformNotifier.rails_logger = true

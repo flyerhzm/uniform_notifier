@@ -30,9 +30,12 @@ class UniformNotifier
     def self._out_of_channel_notify( data )
     end
 
-    def self.wrap_js_association( code )
+    def self.wrap_js_association( code, attributes = {} )
+      attributes = {type: 'text/javascript'}.merge(attributes || {})
+      attributes_string = attributes.map { |k, v| "#{k}=#{v.to_s.inspect}" }.join(' ')
+
       <<-CODE
-<script type="text/javascript">/*<![CDATA[*/
+<script #{attributes_string}>/*<![CDATA[*/
 #{code}
 /*]]>*/</script>
       CODE

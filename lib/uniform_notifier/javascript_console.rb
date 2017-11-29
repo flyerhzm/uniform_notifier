@@ -1,13 +1,15 @@
 class UniformNotifier
   class JavascriptConsole < Base
     def self.active?
-      UniformNotifier.console
+      !!UniformNotifier.console
     end
 
     protected
 
     def self._inline_notify( data )
       message = data.values.compact.join("\n")
+      options = UniformNotifier.console.is_a?(Hash) ? UniformNotifier.console : {}
+      script_attributes = options[:attributes] || {}
 
       code = <<-CODE
 if (typeof(console) !== 'undefined' && console.log) {
@@ -21,7 +23,7 @@ if (typeof(console) !== 'undefined' && console.log) {
 }
 CODE
 
-      wrap_js_association code
+      wrap_js_association code, script_attributes
     end
   end
 end
