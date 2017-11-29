@@ -13,4 +13,22 @@ alert( "javascript alert!" );
 /*]]>*/</script>
 CODE
   end
+
+  it "should accept custom attributes" do
+    UniformNotifier.alert = { attributes: { nonce: 'my-nonce', 'data-key' => :value } }
+    expect(UniformNotifier::JavascriptAlert.inline_notify(:title => "javascript alert!")).to eq <<-CODE
+<script type="text/javascript" nonce="my-nonce" data-key="value">/*<![CDATA[*/
+alert( "javascript alert!" );
+/*]]>*/</script>
+CODE
+  end
+
+  it "should have default attributes if no attributes settings exist" do
+    UniformNotifier.alert = {}
+    expect(UniformNotifier::JavascriptAlert.inline_notify(:title => "javascript alert!")).to eq <<-CODE
+<script type="text/javascript">/*<![CDATA[*/
+alert( "javascript alert!" );
+/*]]>*/</script>
+    CODE
+  end
 end
