@@ -20,7 +20,7 @@ RSpec.describe UniformNotifier::JavascriptConsole do
           console.log(#{"javascript console!".inspect});
         }
       }
-      
+
       /*]]>*/</script>
     CODE
   end
@@ -38,7 +38,7 @@ RSpec.describe UniformNotifier::JavascriptConsole do
           console.log(#{"javascript console!".inspect});
         }
       }
-      
+
       /*]]>*/</script>
     CODE
   end
@@ -56,7 +56,7 @@ RSpec.describe UniformNotifier::JavascriptConsole do
           console.log(#{"javascript console!".inspect});
         }
       }
-      
+
       /*]]>*/</script>
     CODE
   end
