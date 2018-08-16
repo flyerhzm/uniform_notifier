@@ -37,24 +37,24 @@ class UniformNotifier
     end
 
     private
-      def self.connect
-        jid = Jabber::JID.new( @account )
-        @xmpp = Jabber::Client.new( jid )
-        @xmpp.connect
-        @xmpp.auth( @password )
-        @xmpp.send( presence_status ) if @show_online_status
-      end
+    def self.connect
+      jid = Jabber::JID.new( @account )
+      @xmpp = Jabber::Client.new( jid )
+      @xmpp.connect
+      @xmpp.auth( @password )
+      @xmpp.send( presence_status ) if @show_online_status
+    end
 
-      def self.notify( message )
-        connect unless @stay_connected
-        message = Jabber::Message.new( @receiver, message ).
-                                  set_type( :normal ).
-                                  set_subject( 'Uniform Notifier' )
-        @xmpp.send( message )
-      end
+    def self.notify( message )
+      connect unless @stay_connected
+      message = Jabber::Message.new( @receiver, message ).
+                                set_type( :normal ).
+                                set_subject( 'Uniform Notifier' )
+      @xmpp.send( message )
+    end
 
-      def self.presence_status
-        Jabber::Presence.new.set_status( "Uniform Notifier started on #{Time.now}" )
-      end
+    def self.presence_status
+      Jabber::Presence.new.set_status( "Uniform Notifier started on #{Time.now}" )
+    end
   end
 end

@@ -62,16 +62,16 @@ class UniformNotifier
     end
 
     private
-      def self.notify( message )
-        if defined?(::Growl) && @growl.is_a?(::Growl)
-          @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )
-        elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
-          @growl.notify({
-                          :name  => 'uniform_notifier',
-                          :title => 'Uniform Notifier',
-                          :text  => message
-                        })
-        end
+    def self.notify( message )
+      if defined?(::Growl) && @growl.is_a?(::Growl)
+        @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )
+      elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
+        @growl.notify({
+                        :name  => 'uniform_notifier',
+                        :title => 'Uniform Notifier',
+                        :text  => message
+                      })
       end
+    end
   end
 end
