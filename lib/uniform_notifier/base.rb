@@ -36,10 +36,10 @@ class UniformNotifier
       attributes = {type: 'text/javascript'}.merge(attributes || {})
       attributes_string = attributes.map { |k, v| "#{k}=#{v.to_s.inspect}" }.join(' ')
 
-      <<-CODE
-<script #{attributes_string}>/*<![CDATA[*/
-#{code}
-/*]]>*/</script>
+      <<~CODE
+        <script #{attributes_string}>/*<![CDATA[*/
+        #{code}
+        /*]]>*/</script>
       CODE
     end
   end
