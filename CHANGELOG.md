@@ -1,5 +1,7 @@
 # Next Release
 
+* Add [terminal-notifier](https://github.com/julienXX/terminal-notifier) support
+
 ## 1.11.0 (13/11/2017)
 
 * Add Sentry notifier
