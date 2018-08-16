@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UniformNotifier
   class Slack < Base
     POSSIBLE_OPTIONS = %i[username channel]
