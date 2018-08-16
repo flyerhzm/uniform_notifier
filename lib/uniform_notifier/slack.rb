@@ -1,6 +1,7 @@
 class UniformNotifier
   class Slack < Base
     POSSIBLE_OPTIONS = [:username, :channel]
+    SLACK_FORMAT_CODE = "```\n%s\n```"
 
     @slack = nil
 
@@ -35,7 +36,7 @@ class UniformNotifier
         end
 
         def notify(message)
-          @slack.ping message
+          @slack.ping SLACK_FORMAT_CODE % message
         end
 
         def parse_config(config)
