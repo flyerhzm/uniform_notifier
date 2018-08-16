@@ -1,6 +1,6 @@
 class UniformNotifier
   class Slack < Base
-    POSSIBLE_OPTIONS = [:username, :channel]
+    POSSIBLE_OPTIONS = %i[username channel]
 
     @slack = nil
 
