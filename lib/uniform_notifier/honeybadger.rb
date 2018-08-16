@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UniformNotifier
   class HoneybadgerNotifier < Base
     def self.active?
