@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uniform_notifier/base'
 require 'uniform_notifier/errors'
 require 'uniform_notifier/javascript_alert'
