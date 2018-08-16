@@ -40,11 +40,15 @@ if you want to notify by slack, you should install slack-notifier first
 
     gem install slack-notifier
 
+if you want to notify by terminal-notifier, you must install it first
+
+    gem install terminal-notifier
+
 ### add it into Gemfile (Bundler)
 
     gem "uniform_notifier"
 
-  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, honeybadger, slack-notifier gem if you want.
+  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, honeybadger, slack-notifier, terminal-notifier gem if you want.
 
 ## Usage
 
@@ -110,6 +114,9 @@ By default, all notifiers are disabled, you should enable them first.
                              :password => 'password_for_jabber',
                              :receiver => 'recipient_account@jabber.org',
                              :show_online_status => true }
+
+    # terminal-notifier
+    UniformNotifier.terminal_notifier = true
 
     # raise an error
     UniformNotifier.raise = true # raise a generic exception
