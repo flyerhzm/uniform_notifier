@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UniformNotifier
   class JavascriptConsole < Base
     def self.active?
