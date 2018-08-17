@@ -33,7 +33,7 @@ class UniformNotifier
 
       def fail_connection(message)
         @slack = nil
-        raise NotificationError.new(message)
+        raise NotificationError, message
       end
 
       def notify(message)

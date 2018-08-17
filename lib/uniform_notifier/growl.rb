@@ -15,7 +15,7 @@ class UniformNotifier
         setup_connection_gntp(growl)
       rescue LoadError
         @growl = nil
-        raise NotificationError.new( 'You must install the ruby-growl or the ruby_gntp gem to use Growl notification: `gem install ruby-growl` or `gem install ruby_gntp`' )
+        raise NotificationError, 'You must install the ruby-growl or the ruby_gntp gem to use Growl notification: `gem install ruby-growl` or `gem install ruby_gntp`'
       end
     end
 

@@ -25,7 +25,7 @@ class UniformNotifier
       connect if @stay_connected
     rescue LoadError
       @xmpp = nil
-      raise NotificationError.new( 'You must install the xmpp4r gem to use XMPP notification: `gem install xmpp4r`' )
+      raise NotificationError, 'You must install the xmpp4r gem to use XMPP notification: `gem install xmpp4r`'
     end
 
     protected
