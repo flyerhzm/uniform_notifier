@@ -18,7 +18,7 @@ class UniformNotifier
 
       @logger = Logger.new( logdev )
 
-      def @logger.format_message( severity, timestamp, progname, msg )
+      def @logger.format_message( severity, timestamp, _progname, msg )
         "#{timestamp.strftime("%Y-%m-%d %H:%M:%S")}[#{severity}] #{msg}"
       end
     end
