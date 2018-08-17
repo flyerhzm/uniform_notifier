@@ -17,7 +17,7 @@ RSpec.describe UniformNotifier::CustomizedLogger do
     UniformNotifier::CustomizedLogger.out_of_channel_notify(title: 'notify rails logger')
 
     logger.seek(0)
-    expect(logger.read).to eq "#{now.strftime("%Y-%m-%d %H:%M:%S")}[WARN] notify rails logger"
+    expect(logger.read).to eq "#{now.strftime('%Y-%m-%d %H:%M:%S')}[WARN] notify rails logger"
 
     File.delete('test.log')
   end

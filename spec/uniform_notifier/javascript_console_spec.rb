@@ -13,11 +13,11 @@ RSpec.describe UniformNotifier::JavascriptConsole do
       <script type="text/javascript">/*<![CDATA[*/
       if (typeof(console) !== 'undefined' && console.log) {
         if (console.groupCollapsed && console.groupEnd) {
-          console.groupCollapsed(#{"Uniform Notifier".inspect});
-          console.log(#{"javascript console!".inspect});
+          console.groupCollapsed(#{'Uniform Notifier'.inspect});
+          console.log(#{'javascript console!'.inspect});
           console.groupEnd();
         } else {
-          console.log(#{"javascript console!".inspect});
+          console.log(#{'javascript console!'.inspect});
         }
       }
 
@@ -31,11 +31,11 @@ RSpec.describe UniformNotifier::JavascriptConsole do
       <script type="text/javascript" nonce="my-nonce" data-key="value">/*<![CDATA[*/
       if (typeof(console) !== 'undefined' && console.log) {
         if (console.groupCollapsed && console.groupEnd) {
-          console.groupCollapsed(#{"Uniform Notifier".inspect});
-          console.log(#{"javascript console!".inspect});
+          console.groupCollapsed(#{'Uniform Notifier'.inspect});
+          console.log(#{'javascript console!'.inspect});
           console.groupEnd();
         } else {
-          console.log(#{"javascript console!".inspect});
+          console.log(#{'javascript console!'.inspect});
         }
       }
 
@@ -49,11 +49,11 @@ RSpec.describe UniformNotifier::JavascriptConsole do
       <script type="text/javascript">/*<![CDATA[*/
       if (typeof(console) !== 'undefined' && console.log) {
         if (console.groupCollapsed && console.groupEnd) {
-          console.groupCollapsed(#{"Uniform Notifier".inspect});
-          console.log(#{"javascript console!".inspect});
+          console.groupCollapsed(#{'Uniform Notifier'.inspect});
+          console.log(#{'javascript console!'.inspect});
           console.groupEnd();
         } else {
-          console.log(#{"javascript console!".inspect});
+          console.log(#{'javascript console!'.inspect});
         }
       }
 
