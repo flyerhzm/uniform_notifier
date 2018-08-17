@@ -2,7 +2,7 @@
 
 class UniformNotifier
   class Slack < Base
-    POSSIBLE_OPTIONS = %i[username channel]
+    POSSIBLE_OPTIONS = %i[username channel].freeze
 
     @slack = nil
 
