@@ -45,7 +45,7 @@ class UniformNotifier
           POSSIBLE_OPTIONS.include?(name) && !value.nil?
         end
 
-        return config[:webhook_url], options
+        [config[:webhook_url], options]
       end
 
     end
