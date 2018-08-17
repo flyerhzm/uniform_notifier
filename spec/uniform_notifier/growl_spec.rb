@@ -4,11 +4,11 @@ require 'spec_helper'
 
 RSpec.describe UniformNotifier::Growl do
 
-  it "should not notify growl" do
+  it 'should not notify growl' do
     expect(UniformNotifier::Growl.out_of_channel_notify(title: 'notify growl')).to be_nil
   end
 
-  it "should notify growl without password" do
+  it 'should notify growl without password' do
     growl = double('growl', is_a?: true)
     expect(Growl).to receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
@@ -20,7 +20,7 @@ RSpec.describe UniformNotifier::Growl do
     UniformNotifier::Growl.out_of_channel_notify(title: 'notify growl without password')
   end
 
-  it "should notify growl with password" do
+  it 'should notify growl with password' do
     growl = double('growl', is_a?: true)
     expect(Growl).to receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
@@ -32,7 +32,7 @@ RSpec.describe UniformNotifier::Growl do
     UniformNotifier::Growl.out_of_channel_notify(title: 'notify growl with password')
   end
 
-  it "should notify growl with host" do
+  it 'should notify growl with host' do
     growl = double('growl', is_a?: true)
     expect(Growl).to receive(:new).with('10.10.156.17', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
@@ -44,7 +44,7 @@ RSpec.describe UniformNotifier::Growl do
     UniformNotifier::Growl.out_of_channel_notify(title: 'notify growl with password')
   end
 
-  it "should notify growl with quiet" do
+  it 'should notify growl with quiet' do
     growl = double('growl', is_a?: true)
     expect(Growl).to receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
