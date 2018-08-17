@@ -47,9 +47,9 @@ class UniformNotifier
 
     def self.notify( message )
       connect unless @stay_connected
-      message = Jabber::Message.new( @receiver, message ).
-                                set_type( :normal ).
-                                set_subject( 'Uniform Notifier' )
+      message = Jabber::Message.new( @receiver, message )
+                                .set_type( :normal )
+                                .set_subject( 'Uniform Notifier' )
       @xmpp.send( message )
     end
 
