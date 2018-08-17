@@ -34,7 +34,7 @@ class UniformNotifier
     attr_accessor(*AVAILABLE_NOTIFIERS)
 
     def active_notifiers
-      NOTIFIERS.select { |notifier| notifier.active? }
+      NOTIFIERS.select(&:active?)
     end
 
     undef :growl=
