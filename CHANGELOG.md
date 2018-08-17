@@ -1,8 +1,11 @@
 # Next Release
 
-* Add [terminal-notifier](https://github.com/julienXX/terminal-notifier) support
+## 1.12.0 (08/17/2018)
 
-## 1.11.0 (13/11/2017)
+* Add [terminal-notifier](https://github.com/julienXX/terminal-notifier) support
+* Lots of refactors from Awesome Code
+
+## 1.11.0 (11/13/2017)
 
 * Add Sentry notifier
 
