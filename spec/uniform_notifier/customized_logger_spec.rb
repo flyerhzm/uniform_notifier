@@ -8,7 +8,7 @@ RSpec.describe UniformNotifier::CustomizedLogger do
   end
 
   it 'should notify to customized logger' do
-    logger = File.open( 'test.log', 'a+' )
+    logger = File.open('test.log', 'a+')
     logger.sync = true
 
     now = Time.now

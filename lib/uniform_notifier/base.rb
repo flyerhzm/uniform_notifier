@@ -6,16 +6,16 @@ class UniformNotifier
       false
     end
 
-    def self.inline_notify( data )
+    def self.inline_notify(data)
       return unless active?
 
       # For compatibility to the old protocol
       data = { title: data } if data.is_a?(String)
 
-      _inline_notify( data )
+      _inline_notify(data)
     end
 
-    def self.out_of_channel_notify( data )
+    def self.out_of_channel_notify(data)
       return unless active?
 
       # For compatibility to the old protocol
@@ -26,12 +26,12 @@ class UniformNotifier
 
     protected
 
-    def self._inline_notify( data ); end
+    def self._inline_notify(data); end
 
-    def self._out_of_channel_notify( data ); end
+    def self._out_of_channel_notify(data); end
 
-    def self.wrap_js_association( code, attributes = {} )
-      attributes = {type: 'text/javascript'}.merge(attributes || {})
+    def self.wrap_js_association(code, attributes = {})
+      attributes = { type: 'text/javascript' }.merge(attributes || {})
       attributes_string = attributes.map { |k, v| "#{k}=#{v.to_s.inspect}" }.join(' ')
 
       <<~CODE

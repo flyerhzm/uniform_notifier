@@ -8,7 +8,7 @@ class UniformNotifier
       @growl
     end
 
-    def self.setup_connection( growl )
+    def self.setup_connection(growl)
       setup_connection_growl(growl)
     rescue LoadError
       begin
@@ -19,7 +19,7 @@ class UniformNotifier
       end
     end
 
-    def self.setup_connection_growl( growl )
+    def self.setup_connection_growl(growl)
       return unless growl
       require 'ruby-growl'
       if growl.instance_of?(Hash)
@@ -35,7 +35,7 @@ class UniformNotifier
       notify 'Uniform Notifier Growl has been turned on' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
 
-    def self.setup_connection_gntp( growl )
+    def self.setup_connection_gntp(growl)
       return unless growl
       require 'ruby_gntp'
       if growl.instance_of?(Hash)
@@ -55,17 +55,17 @@ class UniformNotifier
 
     protected
 
-    def self._out_of_channel_notify( data )
+    def self._out_of_channel_notify(data)
       message = data.values.compact.join("\n")
 
-      notify( message )
+      notify(message)
     end
 
     private
 
-    def self.notify( message )
+    def self.notify(message)
       if defined?(::Growl) && @growl.is_a?(::Growl)
-        @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )
+        @growl.notify('uniform_notifier', 'Uniform Notifier', message)
       elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
         @growl.notify(
           name: 'uniform_notifier',

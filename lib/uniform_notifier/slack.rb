@@ -11,7 +11,7 @@ class UniformNotifier
         @slack
       end
 
-      def setup_connection(config={})
+      def setup_connection(config = {})
         webhook_url, options = parse_config(config)
         fail_connection('webhook_url required for Slack notification') unless webhook_url
 

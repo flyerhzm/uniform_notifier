@@ -8,7 +8,7 @@ class UniformNotifier
 
     protected
 
-    def self._out_of_channel_notify( data )
+    def self._out_of_channel_notify(data)
       unless defined?(::TerminalNotifier)
         begin
           require 'terminal-notifier'

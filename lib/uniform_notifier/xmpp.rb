@@ -10,7 +10,7 @@ class UniformNotifier
       @xmpp
     end
 
-    def self.setup_connection( xmpp_information )
+    def self.setup_connection(xmpp_information)
       return unless xmpp_information
 
       require 'xmpp4r'
@@ -30,32 +30,32 @@ class UniformNotifier
 
     protected
 
-    def self._out_of_channel_notify( data )
+    def self._out_of_channel_notify(data)
       message = data.values.compact.join("\n")
 
-      notify( message )
+      notify(message)
     end
 
     private
 
     def self.connect
-      jid = Jabber::JID.new( @account )
-      @xmpp = Jabber::Client.new( jid )
+      jid = Jabber::JID.new(@account)
+      @xmpp = Jabber::Client.new(jid)
       @xmpp.connect
-      @xmpp.auth( @password )
-      @xmpp.send( presence_status ) if @show_online_status
+      @xmpp.auth(@password)
+      @xmpp.send(presence_status) if @show_online_status
     end
 
-    def self.notify( message )
+    def self.notify(message)
       connect unless @stay_connected
-      message = Jabber::Message.new( @receiver, message )
-                               .set_type( :normal )
-                               .set_subject( 'Uniform Notifier' )
-      @xmpp.send( message )
+      message = Jabber::Message.new(@receiver, message)
+                               .set_type(:normal)
+                               .set_subject('Uniform Notifier')
+      @xmpp.send(message)
     end
 
     def self.presence_status
-      Jabber::Presence.new.set_status( "Uniform Notifier started on #{Time.now}" )
+      Jabber::Presence.new.set_status("Uniform Notifier started on #{Time.now}")
     end
   end
 end

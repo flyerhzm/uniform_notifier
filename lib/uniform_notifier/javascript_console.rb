@@ -8,7 +8,7 @@ class UniformNotifier
 
     protected
 
-    def self._inline_notify( data )
+    def self._inline_notify(data)
       message = data.values.compact.join("\n")
       options = UniformNotifier.console.is_a?(Hash) ? UniformNotifier.console : {}
       script_attributes = options[:attributes] || {}
