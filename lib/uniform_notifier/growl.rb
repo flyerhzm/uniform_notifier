@@ -62,6 +62,7 @@ class UniformNotifier
     end
 
     private
+
     def self.notify( message )
       if defined?(::Growl) && @growl.is_a?(::Growl)
         @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )

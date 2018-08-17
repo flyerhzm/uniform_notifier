@@ -37,6 +37,7 @@ class UniformNotifier
     end
 
     private
+
     def self.connect
       jid = Jabber::JID.new( @account )
       @xmpp = Jabber::Client.new( jid )

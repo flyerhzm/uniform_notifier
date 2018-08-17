@@ -3,7 +3,6 @@
 require 'spec_helper'
 
 RSpec.describe UniformNotifier::Growl do
-
   it 'should not notify growl' do
     expect(UniformNotifier::Growl.out_of_channel_notify(title: 'notify growl')).to be_nil
   end

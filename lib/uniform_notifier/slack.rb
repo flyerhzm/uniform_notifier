@@ -47,7 +47,6 @@ class UniformNotifier
 
         [config[:webhook_url], options]
       end
-
     end
   end
 end
