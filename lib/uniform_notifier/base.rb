@@ -26,11 +26,9 @@ class UniformNotifier
 
     protected
 
-    def self._inline_notify( data )
-    end
+    def self._inline_notify( data ); end
 
-    def self._out_of_channel_notify( data )
-    end
+    def self._out_of_channel_notify( data ); end
 
     def self.wrap_js_association( code, attributes = {} )
       attributes = {type: 'text/javascript'}.merge(attributes || {})
