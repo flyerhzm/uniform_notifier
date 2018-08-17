@@ -8,7 +8,7 @@ RSpec.describe UniformNotifier::Base do
       allow(UniformNotifier::Base).to receive(:active?).and_return(true)
     end
     it "should keep the compatibility" do
-      expect(UniformNotifier::Base).to receive(:_inline_notify).once.with(:title => "something")
+      expect(UniformNotifier::Base).to receive(:_inline_notify).once.with(title: "something")
       UniformNotifier::Base.inline_notify("something")
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe UniformNotifier::Base do
       allow(UniformNotifier::Base).to receive(:active?).and_return(true)
     end
     it "should keep the compatibility" do
-      expect(UniformNotifier::Base).to receive(:_out_of_channel_notify).once.with(:title => "something")
+      expect(UniformNotifier::Base).to receive(:_out_of_channel_notify).once.with(title: "something")
       UniformNotifier::Base.out_of_channel_notify("something")
     end
   end

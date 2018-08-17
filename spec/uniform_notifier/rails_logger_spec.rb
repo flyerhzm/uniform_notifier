@@ -8,7 +8,7 @@ end
 
 RSpec.describe UniformNotifier::RailsLogger do
   it "should not notify rails logger" do
-    expect(UniformNotifier::RailsLogger.out_of_channel_notify(:title => "notify rails logger")).to be_nil
+    expect(UniformNotifier::RailsLogger.out_of_channel_notify(title: "notify rails logger")).to be_nil
   end
 
   it "should notify rails logger" do
@@ -17,6 +17,6 @@ RSpec.describe UniformNotifier::RailsLogger do
     expect(logger).to receive(:warn).with("notify rails logger")
 
     UniformNotifier.rails_logger = true
-    UniformNotifier::RailsLogger.out_of_channel_notify(:title => "notify rails logger")
+    UniformNotifier::RailsLogger.out_of_channel_notify(title: "notify rails logger")
   end
 end

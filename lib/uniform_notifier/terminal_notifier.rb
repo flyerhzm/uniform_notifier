@@ -17,7 +17,7 @@ class UniformNotifier
         end
       end
 
-      ::TerminalNotifier.notify(data[:body], :title => data[:title])
+      ::TerminalNotifier.notify(data[:body], title: data[:title])
     end
   end
 end

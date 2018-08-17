@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe UniformNotifier::Xmpp do
   it "should not notify xmpp" do
-    expect(UniformNotifier::Xmpp.out_of_channel_notify(:title => "notify xmpp")).to be_nil
+    expect(UniformNotifier::Xmpp.out_of_channel_notify(title: "notify xmpp")).to be_nil
   end
 
   it "should notify xmpp without online status" do
@@ -21,8 +21,8 @@ RSpec.describe UniformNotifier::Xmpp do
     expect(message).to receive(:set_subject).with('Uniform Notifier').and_return(message)
     expect(xmpp).to receive(:send).with(message)
 
-    UniformNotifier.xmpp = {:account => 'from@gmail.com', :password => '123456', :receiver => 'to@gmail.com', :show_online_status => false}
-    UniformNotifier::Xmpp.out_of_channel_notify(:title => 'notify xmpp')
+    UniformNotifier.xmpp = {account: 'from@gmail.com', password: '123456', receiver: 'to@gmail.com', show_online_status: false}
+    UniformNotifier::Xmpp.out_of_channel_notify(title: 'notify xmpp')
   end
 
   it "should notify xmpp with online status" do
@@ -46,7 +46,7 @@ RSpec.describe UniformNotifier::Xmpp do
     expect(message).to receive(:set_subject).with('Uniform Notifier').and_return(message)
     expect(xmpp).to receive(:send).with(message)
 
-    UniformNotifier.xmpp = {:account => 'from@gmail.com', :password => '123456', :receiver => 'to@gmail.com', :show_online_status => true}
-    UniformNotifier::Xmpp.out_of_channel_notify(:title => 'notify xmpp')
+    UniformNotifier.xmpp = {account: 'from@gmail.com', password: '123456', receiver: 'to@gmail.com', show_online_status: true}
+    UniformNotifier::Xmpp.out_of_channel_notify(title: 'notify xmpp')
   end
 end

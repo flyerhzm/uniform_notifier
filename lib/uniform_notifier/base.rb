@@ -10,7 +10,7 @@ class UniformNotifier
       return unless active?
 
       # For compatibility to the old protocol
-      data = { :title => data } if data.is_a?(String)
+      data = { title: data } if data.is_a?(String)
 
       _inline_notify( data )
     end
@@ -19,7 +19,7 @@ class UniformNotifier
       return unless active?
 
       # For compatibility to the old protocol
-      data = { :title => data } if data.is_a?(String)
+      data = { title: data } if data.is_a?(String)
 
       _out_of_channel_notify(data)
     end
