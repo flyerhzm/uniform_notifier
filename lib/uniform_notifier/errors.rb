@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class UniformNotifier
-  class Exception < ::Exception; end
+  class Exception < RuntimeError; end
 end
