@@ -46,9 +46,9 @@ class UniformNotifier
       @host ||= 'localhost'
       @growl = GNTP.new('uniform_notifier', @host, @password, 23053)
       @growl.register(notifications: [{
-                                            name: 'uniform_notifier',
-                                            enabled: true,
-                                          }])
+                        name: 'uniform_notifier',
+                        enabled: true,
+                      }])
 
       notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
@@ -68,10 +68,10 @@ class UniformNotifier
         @growl.notify( 'uniform_notifier', 'Uniform Notifier', message )
       elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
         @growl.notify(
-                        name: 'uniform_notifier',
-                        title: 'Uniform Notifier',
-                        text: message
-                      )
+          name: 'uniform_notifier',
+          title: 'Uniform Notifier',
+          text: message
+        )
       end
     end
   end

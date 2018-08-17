@@ -19,14 +19,12 @@ require 'uniform_notifier/terminal_notifier'
 
 class UniformNotifier
   AVAILABLE_NOTIFIERS = %i[alert console growl honeybadger xmpp rails_logger
-                         customized_logger airbrake rollbar bugsnag slack raise
-                         sentry terminal_notifier
-                        ].freeze
+                           customized_logger airbrake rollbar bugsnag slack raise
+                           sentry terminal_notifier].freeze
 
   NOTIFIERS = [JavascriptAlert, JavascriptConsole, Growl, HoneybadgerNotifier, Xmpp, RailsLogger,
                CustomizedLogger, AirbrakeNotifier, RollbarNotifier, BugsnagNotifier, Raise, Slack,
-               SentryNotifier, TerminalNotifier
-              ].freeze
+               SentryNotifier, TerminalNotifier].freeze
 
   class NotificationError < StandardError; end
 
