@@ -62,89 +62,93 @@ the other is <code>out_of_channel_notify</code>, for rails logger, customized lo
 
 By default, all notifiers are disabled, you should enable them first.
 
-    # javascript alert
-    UniformNotifier.alert = true
-    # javascript alert with options
-    # the attributes key adds custom attributes to the script tag appended to the body
-    UniformNotifier.alert = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
+```ruby
+# javascript alert
+UniformNotifier.alert = true
+# javascript alert with options
+# the attributes key adds custom attributes to the script tag appended to the body
+UniformNotifier.alert = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
 
-    # javascript console (Safari/Webkit browsers or Firefox w/Firebug installed)
-    UniformNotifier.console = true
-    # javascript console with options
-    # the attributes key adds custom attributes to the script tag appended to the body
-    UniformNotifier.console = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
+# javascript console (Safari/Webkit browsers or Firefox w/Firebug installed)
+UniformNotifier.console = true
+# javascript console with options
+# the attributes key adds custom attributes to the script tag appended to the body
+UniformNotifier.console = { :attributes => { :nonce => 'mySecret-nonce', 'data-key' => 'value' } }
 
-    # rails logger
-    UniformNotifier.rails_logger = true
+# rails logger
+UniformNotifier.rails_logger = true
 
-    # airbrake
-    UniformNotifier.airbrake = true
-    # airbrake with options
-    UniformNotifier.airbrake = { :error_class => Exception }
+# airbrake
+UniformNotifier.airbrake = true
+# airbrake with options
+UniformNotifier.airbrake = { :error_class => Exception }
 
-    # Honeybadger
-    #
-    # Reporting live data from development is disabled by default. Ensure
-    # that the `report_data` option is enabled via configuration.
-    UniformNotifier.honeybadger = true
-    # Honeybadger with options
-    UniformNotifier.honeybadger = { :error_class => 'Exception' }
+# Honeybadger
+#
+# Reporting live data from development is disabled by default. Ensure
+# that the `report_data` option is enabled via configuration.
+UniformNotifier.honeybadger = true
+# Honeybadger with options
+UniformNotifier.honeybadger = { :error_class => 'Exception' }
 
-    # rollbar
-    UniformNotifier.rollbar = true
+# rollbar
+UniformNotifier.rollbar = true
 
-    # bugsnag
-    UniformNotifier.bugsnag = true
-    # bugsnag with options
-    UniformNotifier.bugsnag = { :api_key => 'something' }
+# bugsnag
+UniformNotifier.bugsnag = true
+# bugsnag with options
+UniformNotifier.bugsnag = { :api_key => 'something' }
 
-    # slack
-    UniformNotifier.slack = true
-    # slack with options
-    UniformNotifier.slack = { :webhook_url => 'http://some.slack.url', :channel => '#default', :username => 'notifier' }
+# slack
+UniformNotifier.slack = true
+# slack with options
+UniformNotifier.slack = { :webhook_url => 'http://some.slack.url', :channel => '#default', :username => 'notifier' }
 
-    # customized logger
-    logger = File.open('notify.log', 'a+')
-    logger.sync = true
-    UniformNotifier.customized_logger = logger
+# customized logger
+logger = File.open('notify.log', 'a+')
+logger.sync = true
+UniformNotifier.customized_logger = logger
 
-    # growl without password
-    UniformNotifier.growl = true
-    # growl with passowrd
-    UniformNotifier.growl = { :password => 'growl password' }
+# growl without password
+UniformNotifier.growl = true
+# growl with passowrd
+UniformNotifier.growl = { :password => 'growl password' }
 
-    # xmpp
-    UniformNotifier.xmpp = { :account => 'sender_account@jabber.org',
-                             :password => 'password_for_jabber',
-                             :receiver => 'recipient_account@jabber.org',
-                             :show_online_status => true }
+# xmpp
+UniformNotifier.xmpp = { :account => 'sender_account@jabber.org',
+                         :password => 'password_for_jabber',
+                         :receiver => 'recipient_account@jabber.org',
+                         :show_online_status => true }
 
-    # terminal-notifier
-    UniformNotifier.terminal_notifier = true
+# terminal-notifier
+UniformNotifier.terminal_notifier = true
 
-    # raise an error
-    UniformNotifier.raise = true # raise a generic exception
+# raise an error
+UniformNotifier.raise = true # raise a generic exception
 
-    class MyExceptionClass < Exception; end
-    UniformNotifier.raise = MyExceptionClass # raise a custom exception type
+class MyExceptionClass < Exception; end
+UniformNotifier.raise = MyExceptionClass # raise a custom exception type
 
-    UniformNotifier.raise = false # don't raise errors
+UniformNotifier.raise = false # don't raise errors
+```
 
 After that, you can enjoy the notifiers, that's cool!
 
-    # the notify message will be notified to rails logger, customized logger, growl or xmpp.
-    UniformNotifier.active_notifiers.each do |notifier|
-      notifier.out_of_channel_notify("customize message")
-    end
+```ruby
+# the notify message will be notified to rails logger, customized logger, growl or xmpp.
+UniformNotifier.active_notifiers.each do |notifier|
+  notifier.out_of_channel_notify("customize message")
+end
 
-    # the notify message will be wrapped by <script type="text/javascript">...</script>,
-    # you should append the javascript_str at the bottom of http response body.
-    # for more information, please check https://github.com/flyerhzm/bullet/blob/master/lib/bullet/rack.rb
-    responses = []
-    UniformNotifier.active_notifiers.each do |notifier|
-      responses << notifier.inline_notify("customize message")
-    end
-    javascript_str = responses.join("\n")
+# the notify message will be wrapped by <script type="text/javascript">...</script>,
+# you should append the javascript_str at the bottom of http response body.
+# for more information, please check https://github.com/flyerhzm/bullet/blob/master/lib/bullet/rack.rb
+responses = []
+UniformNotifier.active_notifiers.each do |notifier|
+  responses << notifier.inline_notify("customize message")
+end
+javascript_str = responses.join("\n")
+```
 
 ## Growl Support
 
