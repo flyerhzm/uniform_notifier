@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = 'uniform_notifier'
 
+  s.required_ruby_version = '>= 2.3'
+
   s.add_development_dependency 'ruby-growl', ['= 4.0']
   s.add_development_dependency 'ruby_gntp', ['= 0.3.4']
   s.add_development_dependency 'xmpp4r', ['= 0.5']
