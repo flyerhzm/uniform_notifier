@@ -10,9 +10,7 @@ class UniformNotifier
 
     def self._out_of_channel_notify(data)
       opt = {}
-      if UniformNotifier.bugsnag.is_a?(Hash)
-        opt = UniformNotifier.bugsnag
-      end
+      opt = UniformNotifier.bugsnag if UniformNotifier.bugsnag.is_a?(Hash)
 
       exception = Exception.new(data[:title])
       exception.set_backtrace(data[:backtrace]) if data[:backtrace]

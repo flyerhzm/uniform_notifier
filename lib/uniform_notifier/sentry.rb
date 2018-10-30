@@ -12,9 +12,7 @@ class UniformNotifier
       message = data.values.compact.join("\n")
 
       opt = {}
-      if UniformNotifier.sentry.is_a?(Hash)
-        opt = UniformNotifier.sentry
-      end
+      opt = UniformNotifier.sentry if UniformNotifier.sentry.is_a?(Hash)
 
       exception = Exception.new(message)
       Raven.capture_exception(exception, opt)
