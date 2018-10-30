@@ -1,5 +1,9 @@
 # Next Release
 
+## 1.12.1
+
+* Require Ruby 2.3+
+
 ## 1.12.0 (08/17/2018)
 
 * Add [terminal-notifier](https://github.com/julienXX/terminal-notifier) support
