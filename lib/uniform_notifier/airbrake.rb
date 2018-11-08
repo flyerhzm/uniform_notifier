@@ -12,9 +12,7 @@ class UniformNotifier
       message = data.values.compact.join("\n")
 
       opt = {}
-      if UniformNotifier.airbrake.is_a?(Hash)
-        opt = UniformNotifier.airbrake
-      end
+      opt = UniformNotifier.airbrake if UniformNotifier.airbrake.is_a?(Hash)
 
       exception = Exception.new(message)
       Airbrake.notify(exception, opt)

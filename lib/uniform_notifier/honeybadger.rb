@@ -12,9 +12,7 @@ class UniformNotifier
       message = data.values.compact.join("\n")
 
       opt = {}
-      if UniformNotifier.honeybadger.is_a?(Hash)
-        opt = UniformNotifier.honeybadger
-      end
+      opt = UniformNotifier.honeybadger if UniformNotifier.honeybadger.is_a?(Hash)
 
       exception = Exception.new(message)
       Honeybadger.notify(exception, opt)
