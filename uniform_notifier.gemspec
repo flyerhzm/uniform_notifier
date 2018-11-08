@@ -28,4 +28,10 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ['lib']
+
+  if s.respond_to?(:metadata)
+    s.metadata['changelog_uri'] = 'https://github.com/flyerhzm/uniform_notifier/blob/master/CHANGELOG.md'
+    s.metadata['source_code_uri'] = 'https://github.com/flyerhzm/uniform_notifier'
+    s.metadata['bug_tracker_uri'] = 'https://github.com/flyerhzm/uniform_notifier/issues'
+  end
 end
