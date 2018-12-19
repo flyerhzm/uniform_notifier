@@ -93,6 +93,8 @@ UniformNotifier.honeybadger = { :error_class => 'Exception' }
 
 # rollbar
 UniformNotifier.rollbar = true
+# rollbar with options (level can be 'debug', 'info', 'warning', 'error' or 'critical')
+UniformNotifier.rollbar = { :level => 'warning' }
 
 # bugsnag
 UniformNotifier.bugsnag = true
