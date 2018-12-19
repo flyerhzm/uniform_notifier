@@ -2,6 +2,8 @@
 
 class UniformNotifier
   class RollbarNotifier < Base
+    DEFAULT_LEVEL = 'info'
+
     def self.active?
       !!UniformNotifier.rollbar
     end
@@ -12,7 +14,10 @@ class UniformNotifier
       message = data.values.compact.join("\n")
 
       exception = Exception.new(message)
-      Rollbar.info(exception)
+      level = UniformNotifier.rollbar.fetch(:level, DEFAULT_LEVEL) if UniformNotifier.rollbar.is_a?(Hash)
+      level ||= DEFAULT_LEVEL
+
+      Rollbar.log(level, exception)
     end
   end
 end
