@@ -14,8 +14,6 @@ Gem::Specification.new do |s|
   s.description = 'uniform notifier for rails logger, customized logger, javascript alert, javascript console, growl and xmpp'
   s.license     = 'MIT'
 
-  s.rubyforge_project = 'uniform_notifier'
-
   s.required_ruby_version = '>= 2.3'
 
   s.add_development_dependency 'ruby-growl', ['= 4.0']
