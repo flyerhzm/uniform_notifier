@@ -164,10 +164,6 @@ To get Growl support up-and-running, follow the steps below:
 * Restart Growl ("General" tab -> Stop Growl -> Start Growl)
 * Boot up your application. UniformNotifier will automatically send a Growl notification when Growl is turned on. If you do not see it when your application loads, make sure it is enabled in your initializer and double-check the steps above.
 
-### Ruby 1.9 issue
-
-ruby-growl gem has an issue about md5 in ruby 1.9, if you use growl and ruby 1.9, check this [gist][1]
-
 ## XMPP/Jabber Support
 
 To get XMPP support up-and-running, follow the steps below:
@@ -180,4 +176,3 @@ To get XMPP support up-and-running, follow the steps below:
 
 
 [0]: https://github.com/flyerhzm/bullet
-[1]: https://gist.github.com/300184
