@@ -15,7 +15,8 @@ class UniformNotifier
       opt = UniformNotifier.honeybadger if UniformNotifier.honeybadger.is_a?(Hash)
 
       exception = Exception.new(message)
-      Honeybadger.notify(exception, opt)
+      honeybadger_class = opt[:honeybadger_class] || Honeybadger
+      honeybadger_class.notify(exception, opt)
     end
   end
 end
