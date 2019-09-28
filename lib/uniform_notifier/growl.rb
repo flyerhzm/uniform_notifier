@@ -21,6 +21,7 @@ class UniformNotifier
 
     def self.setup_connection_growl(growl)
       return unless growl
+
       require 'ruby-growl'
       if growl.instance_of?(Hash)
         @password = growl.include?(:password) ? growl[:password] : nil
@@ -37,6 +38,7 @@ class UniformNotifier
 
     def self.setup_connection_gntp(growl)
       return unless growl
+
       require 'ruby_gntp'
       if growl.instance_of?(Hash)
         @password = growl.include?(:password) ? growl[:password] : nil
