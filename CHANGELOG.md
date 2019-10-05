@@ -1,6 +1,11 @@
 # Next Release
 
-## 1.12.1
+## 1.13.0 (10/05/2019)
+
+* Add Honeybadger class dependecy injection.
+* Allow configuration of Rollbar level.
+
+## 1.12.1 (10/30/2018)
 
 * Require Ruby 2.3+
 
