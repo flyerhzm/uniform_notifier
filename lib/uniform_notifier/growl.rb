@@ -47,7 +47,7 @@ class UniformNotifier
       @growl = GNTP.new('uniform_notifier', @host, @password, 23053)
       @growl.register(notifications: [{
                         name: 'uniform_notifier',
-                        enabled: true,
+                        enabled: true
                       }])
 
       notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
