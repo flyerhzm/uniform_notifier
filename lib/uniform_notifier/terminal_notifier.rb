@@ -13,7 +13,8 @@ class UniformNotifier
         begin
           require 'terminal-notifier'
         rescue LoadError
-          raise NotificationError, 'You must install the terminal-notifier gem to use terminal_notifier: `gem install terminal-notifier`'
+          raise NotificationError,
+                'You must install the terminal-notifier gem to use terminal_notifier: `gem install terminal-notifier`'
         end
       end
 

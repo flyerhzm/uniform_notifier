@@ -18,7 +18,7 @@ class UniformNotifier
       @xmpp = xmpp_information
       @receiver = xmpp_information[:receiver]
       @password = xmpp_information[:password]
-      @account  = xmpp_information[:account]
+      @account = xmpp_information[:account]
       @show_online_status = xmpp_information[:show_online_status]
       @stay_connected = xmpp_information[:stay_connected].nil? ? true : xmpp_information[:stay_connected]
 
@@ -48,9 +48,7 @@ class UniformNotifier
 
     def self.notify(message)
       connect unless @stay_connected
-      message = Jabber::Message.new(@receiver, message)
-                               .set_type(:normal)
-                               .set_subject('Uniform Notifier')
+      message = Jabber::Message.new(@receiver, message).set_type(:normal).set_subject('Uniform Notifier')
       @xmpp.send(message)
     end
 
