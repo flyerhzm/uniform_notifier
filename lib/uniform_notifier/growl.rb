@@ -15,7 +15,8 @@ class UniformNotifier
         setup_connection_gntp(growl)
       rescue LoadError
         @growl = nil
-        raise NotificationError, 'You must install the ruby-growl or the ruby_gntp gem to use Growl notification: `gem install ruby-growl` or `gem install ruby_gntp`'
+        raise NotificationError,
+              'You must install the ruby-growl or the ruby_gntp gem to use Growl notification: `gem install ruby-growl` or `gem install ruby_gntp`'
       end
     end
 
@@ -44,11 +45,8 @@ class UniformNotifier
       end
       @password ||= nil
       @host ||= 'localhost'
-      @growl = GNTP.new('uniform_notifier', @host, @password, 23053)
-      @growl.register(notifications: [{
-                        name: 'uniform_notifier',
-                        enabled: true,
-                      }])
+      @growl = GNTP.new('uniform_notifier', @host, @password, 23_053)
+      @growl.register(notifications: [{ name: 'uniform_notifier', enabled: true }])
 
       notify 'Uniform Notifier Growl has been turned on (using GNTP)' if !growl.instance_of?(Hash) || !growl[:quiet]
     end
@@ -67,11 +65,7 @@ class UniformNotifier
       if defined?(::Growl) && @growl.is_a?(::Growl)
         @growl.notify('uniform_notifier', 'Uniform Notifier', message)
       elsif defined?(::GNTP) && @growl.is_a?(::GNTP)
-        @growl.notify(
-          name: 'uniform_notifier',
-          title: 'Uniform Notifier',
-          text: message
-        )
+        @growl.notify(name: 'uniform_notifier', title: 'Uniform Notifier', text: message)
       end
     end
   end

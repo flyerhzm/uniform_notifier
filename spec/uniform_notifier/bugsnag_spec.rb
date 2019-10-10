@@ -16,14 +16,20 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
     let(:notification_data) { { user: 'user', title: 'notify bugsnag', url: 'URL', body: 'something' } }
 
     it 'should notify bugsnag' do
-      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new(notification_data[:title]), grouping_hash: notification_data[:body], notification: notification_data)
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new(notification_data[:title]),
+        grouping_hash: notification_data[:body], notification: notification_data
+      )
 
       UniformNotifier.bugsnag = true
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
     end
 
     it 'should notify bugsnag with option' do
-      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new(notification_data[:title]), foo: :bar, grouping_hash: notification_data[:body], notification: notification_data)
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new(notification_data[:title]),
+        foo: :bar, grouping_hash: notification_data[:body], notification: notification_data
+      )
 
       UniformNotifier.bugsnag = { foo: :bar }
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
@@ -33,14 +39,20 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
     let(:notification_data) { 'notify bugsnag' }
 
     it 'should notify bugsnag' do
-      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new('notify bugsnag'), grouping_hash: 'notify bugsnag', notification: { title: 'notify bugsnag' })
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new('notify bugsnag'),
+        grouping_hash: 'notify bugsnag', notification: { title: 'notify bugsnag' }
+      )
 
       UniformNotifier.bugsnag = true
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
     end
 
     it 'should notify bugsnag with option' do
-      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new('notify bugsnag'), foo: :bar, grouping_hash: 'notify bugsnag', notification: { title: 'notify bugsnag' })
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new('notify bugsnag'),
+        foo: :bar, grouping_hash: 'notify bugsnag', notification: { title: 'notify bugsnag' }
+      )
 
       UniformNotifier.bugsnag = { foo: :bar }
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)

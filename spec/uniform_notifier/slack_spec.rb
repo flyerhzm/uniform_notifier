@@ -20,6 +20,7 @@ RSpec.describe UniformNotifier::Slack do
         begin
           UniformNotifier.slack = {}
         rescue UniformNotifier::NotificationError
+
         ensure
           expect_any_instance_of(Slack::Notifier).to_not receive(:ping)
           expect(UniformNotifier::Slack.out_of_channel_notify(title: 'notify slack')).to be_nil
@@ -34,7 +35,8 @@ RSpec.describe UniformNotifier::Slack do
     end
 
     it 'should allow username and channel config options' do
-      expect(Slack::Notifier).to receive(:new).with('http://some.slack.url', username: 'The Dude', channel: '#carpets').and_return(true)
+      expect(Slack::Notifier).to receive(:new).with('http://some.slack.url', username: 'The Dude', channel: '#carpets')
+        .and_return(true)
       UniformNotifier.slack = { webhook_url: 'http://some.slack.url', username: 'The Dude', channel: '#carpets' }
       expect(UniformNotifier::Slack.active?).to eq true
     end
