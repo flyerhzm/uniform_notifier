@@ -18,8 +18,7 @@ class UniformNotifier
         require 'slack-notifier'
         @slack = ::Slack::Notifier.new webhook_url, options
       rescue LoadError
-        fail_connection 'You must install the slack-notifier gem to use Slack notification: '\
-                        '`gem install slack-notifier`'
+        fail_connection 'You must install the slack-notifier gem to use Slack notification: `gem install slack-notifier`'
       end
 
       protected
