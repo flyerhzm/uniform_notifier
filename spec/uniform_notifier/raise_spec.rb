@@ -16,7 +16,7 @@ RSpec.describe UniformNotifier::Raise do
   end
 
   it 'allows the user to override the default exception class' do
-    klass = Class.new(Exception)
+    klass = Class.new(RuntimeError)
     UniformNotifier.raise = klass
     expect { UniformNotifier::Raise.out_of_channel_notify(title: 'notification') }.to raise_error(klass, 'notification')
   end
