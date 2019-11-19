@@ -40,9 +40,7 @@ class UniformNotifier
       end
 
       def parse_config(config)
-        options = config.select do |name, value|
-          POSSIBLE_OPTIONS.include?(name) && !value.nil?
-        end
+        options = config.select { |name, value| POSSIBLE_OPTIONS.include?(name) && !value.nil? }
 
         [config[:webhook_url], options]
       end
