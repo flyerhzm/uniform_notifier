@@ -1,5 +1,7 @@
 # Next Release
 
+* Fix UniformNotifier::Raise.active? when .rails= receives a false value
+
 ## 1.13.0 (10/05/2019)
 
 * Add Honeybadger class dependecy injection.
