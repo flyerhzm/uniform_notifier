@@ -3,7 +3,7 @@
 class UniformNotifier
   class Raise < Base
     def self.active?
-      defined?(@exception_class)
+      defined?(@exception_class) ? @exception_class : false
     end
 
     def self.setup_connection(exception_class)
