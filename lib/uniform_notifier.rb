@@ -13,6 +13,7 @@ require 'uniform_notifier/airbrake'
 require 'uniform_notifier/sentry'
 require 'uniform_notifier/rollbar'
 require 'uniform_notifier/bugsnag'
+require 'uniform_notifier/appsignal'
 require 'uniform_notifier/slack'
 require 'uniform_notifier/raise'
 require 'uniform_notifier/terminal_notifier'
@@ -32,6 +33,7 @@ class UniformNotifier
     slack
     raise
     sentry
+    appsignal
     terminal_notifier
   ].freeze
 
@@ -49,6 +51,7 @@ class UniformNotifier
     Raise,
     Slack,
     SentryNotifier,
+    AppsignalNotifier,
     TerminalNotifier
   ].freeze
 

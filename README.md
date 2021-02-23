@@ -4,7 +4,7 @@
 Status](https://secure.travis-ci.org/flyerhzm/uniform_notifier.svg)](http://travis-ci.org/flyerhzm/uniform_notifier)
 [![AwesomeCode Status for flyerhzm/uniform_notifier](https://awesomecode.io/projects/3e29a7de-0b37-4ecf-b06d-410ebf815174/status)](https://awesomecode.io/repos/flyerhzm/uniform_notifier)
 
-uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp, airbrake and honeybadger.
+uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp, airbrake, honeybadger and AppSignal.
 
 ## Install
 
@@ -39,6 +39,10 @@ if you want to notify by rollbar, you should install rollbar first
 if you want to notify by bugsnag, you should install bugsnag first
 
     gem install bugsnag
+
+if you want to notify by AppSignal, you should install AppSignal first
+
+    gem install appsignal
 
 if you want to notify by slack, you should install slack-notifier first
 
@@ -82,6 +86,11 @@ UniformNotifier.rails_logger = true
 UniformNotifier.airbrake = true
 # airbrake with options
 UniformNotifier.airbrake = { :error_class => Exception }
+
+# AppSignal
+UniformNotifier.appsignal = true
+# AppSignal with options
+UniformNotifier.appsignal = { :namespace => "Background", :tags => { :hostname => "frontend1" } }
 
 # Honeybadger
 #
