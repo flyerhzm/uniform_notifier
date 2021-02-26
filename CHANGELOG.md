@@ -1,5 +1,8 @@
 # Next Release
 
+# 1.14.0 (02/26/2021)
+
+* Add AppSignal integration
 * Fix UniformNotifier::Raise.active? when .rails= receives a false value
 
 ## 1.13.0 (10/05/2019)
