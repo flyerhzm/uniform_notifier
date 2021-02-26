@@ -26,7 +26,7 @@ RSpec.describe UniformNotifier::JavascriptConsole do
   end
 
   it 'should accept custom attributes' do
-    UniformNotifier.console = { attributes: { nonce: 'my-nonce', 'data-key' => :value } }
+    UniformNotifier.console = { attributes: { :nonce => 'my-nonce', 'data-key' => :value } }
     expect(UniformNotifier::JavascriptConsole.inline_notify(title: 'javascript console!')).to eq <<~CODE
       <script type="text/javascript" nonce="my-nonce" data-key="value">/*<![CDATA[*/
       if (typeof(console) !== 'undefined' && console.log) {

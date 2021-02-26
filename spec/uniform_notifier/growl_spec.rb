@@ -12,12 +12,11 @@ RSpec.describe UniformNotifier::Growl do
     expect(Growl).to receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
     expect(growl).to receive(:password=).with(nil)
-    expect(growl).to receive(:notify).with(
-      'uniform_notifier',
-      'Uniform Notifier',
-      'Uniform Notifier Growl has been turned on'
-    ).ordered
-    expect(growl).to receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl without password')
+    expect(growl).to receive(:notify)
+      .with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on')
+      .ordered
+    expect(growl).to receive(:notify)
+      .with('uniform_notifier', 'Uniform Notifier', 'notify growl without password')
       .ordered
 
     UniformNotifier.growl = true
@@ -29,11 +28,9 @@ RSpec.describe UniformNotifier::Growl do
     expect(Growl).to receive(:new).with('localhost', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
     expect(growl).to receive(:password=).with('123456')
-    expect(growl).to receive(:notify).with(
-      'uniform_notifier',
-      'Uniform Notifier',
-      'Uniform Notifier Growl has been turned on'
-    ).ordered
+    expect(growl).to receive(:notify)
+      .with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on')
+      .ordered
     expect(growl).to receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password').ordered
 
     UniformNotifier.growl = { password: '123456' }
@@ -45,11 +42,9 @@ RSpec.describe UniformNotifier::Growl do
     expect(Growl).to receive(:new).with('10.10.156.17', 'uniform_notifier').and_return(growl)
     expect(growl).to receive(:add_notification).with('uniform_notifier')
     expect(growl).to receive(:password=).with('123456')
-    expect(growl).to receive(:notify).with(
-      'uniform_notifier',
-      'Uniform Notifier',
-      'Uniform Notifier Growl has been turned on'
-    ).ordered
+    expect(growl).to receive(:notify)
+      .with('uniform_notifier', 'Uniform Notifier', 'Uniform Notifier Growl has been turned on')
+      .ordered
     expect(growl).to receive(:notify).with('uniform_notifier', 'Uniform Notifier', 'notify growl with password').ordered
 
     UniformNotifier.growl = { password: '123456', host: '10.10.156.17' }
