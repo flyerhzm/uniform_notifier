@@ -22,7 +22,10 @@ RSpec.describe UniformNotifier::Xmpp do
     expect(xmpp).to receive(:send).with(message)
 
     UniformNotifier.xmpp = {
-      account: 'from@gmail.com', password: '123456', receiver: 'to@gmail.com', show_online_status: false
+      account: 'from@gmail.com',
+      password: '123456',
+      receiver: 'to@gmail.com',
+      show_online_status: false
     }
     UniformNotifier::Xmpp.out_of_channel_notify(title: 'notify xmpp')
   end
@@ -49,7 +52,10 @@ RSpec.describe UniformNotifier::Xmpp do
     expect(xmpp).to receive(:send).with(message)
 
     UniformNotifier.xmpp = {
-      account: 'from@gmail.com', password: '123456', receiver: 'to@gmail.com', show_online_status: true
+      account: 'from@gmail.com',
+      password: '123456',
+      receiver: 'to@gmail.com',
+      show_online_status: true
     }
     UniformNotifier::Xmpp.out_of_channel_notify(title: 'notify xmpp')
   end

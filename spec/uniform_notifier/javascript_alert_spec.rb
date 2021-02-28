@@ -17,7 +17,7 @@ RSpec.describe UniformNotifier::JavascriptAlert do
   end
 
   it 'should accept custom attributes' do
-    UniformNotifier.alert = { attributes: { nonce: 'my-nonce', 'data-key' => :value } }
+    UniformNotifier.alert = { attributes: { :nonce => 'my-nonce', 'data-key' => :value } }
     expect(UniformNotifier::JavascriptAlert.inline_notify(title: 'javascript alert!')).to eq <<~CODE
       <script type="text/javascript" nonce="my-nonce" data-key="value">/*<![CDATA[*/
       alert( "javascript alert!" );

@@ -55,7 +55,8 @@ class UniformNotifier
     TerminalNotifier
   ].freeze
 
-  class NotificationError < StandardError; end
+  class NotificationError < StandardError
+  end
 
   class << self
     attr_accessor(*AVAILABLE_NOTIFIERS)
@@ -64,27 +65,27 @@ class UniformNotifier
       NOTIFIERS.select(&:active?)
     end
 
-    undef :growl=
+    undef growl=
     def growl=(growl)
       UniformNotifier::Growl.setup_connection(growl)
     end
 
-    undef :xmpp=
+    undef xmpp=
     def xmpp=(xmpp)
       UniformNotifier::Xmpp.setup_connection(xmpp)
     end
 
-    undef :customized_logger=
+    undef customized_logger=
     def customized_logger=(logdev)
       UniformNotifier::CustomizedLogger.setup(logdev)
     end
 
-    undef :slack=
+    undef slack=
     def slack=(slack)
       UniformNotifier::Slack.setup_connection(slack)
     end
 
-    undef :raise=
+    undef raise=
     def raise=(exception_class)
       UniformNotifier::Raise.setup_connection(exception_class)
     end
