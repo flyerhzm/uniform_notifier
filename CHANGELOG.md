@@ -1,5 +1,9 @@
 # Next Release
 
+# 1.14.1 (02/28/2021)
+
+* Fix uninitialized constant ``UniformNotifier::SentryNotifier::Raven`` error
+
 # 1.14.0 (02/26/2021)
 
 * Add AppSignal integration
