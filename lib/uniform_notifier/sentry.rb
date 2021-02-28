@@ -2,20 +2,22 @@
 
 class UniformNotifier
   class SentryNotifier < Base
-    def self.active?
-      !!UniformNotifier.sentry
-    end
+    class << self
+      def active?
+        !!UniformNotifier.sentry
+      end
 
-    protected
+      protected
 
-    def self._out_of_channel_notify(data)
-      message = data.values.compact.join("\n")
+      def _out_of_channel_notify(data)
+        message = data.values.compact.join("\n")
 
-      opt = {}
-      opt = UniformNotifier.sentry if UniformNotifier.sentry.is_a?(Hash)
+        opt = {}
+        opt = UniformNotifier.sentry if UniformNotifier.sentry.is_a?(Hash)
 
-      exception = Exception.new(message)
-      Sentry.capture_exception(exception, opt)
+        exception = Exception.new(message)
+        Sentry.capture_exception(exception, opt)
+      end
     end
   end
 end

@@ -2,30 +2,32 @@
 
 class UniformNotifier
   class JavascriptConsole < Base
-    def self.active?
-      !!UniformNotifier.console
-    end
+    class << self
+      def active?
+        !!UniformNotifier.console
+      end
 
-    protected
+      protected
 
-    def self._inline_notify(data)
-      message = data.values.compact.join("\n")
-      options = UniformNotifier.console.is_a?(Hash) ? UniformNotifier.console : {}
-      script_attributes = options[:attributes] || {}
+      def _inline_notify(data)
+        message = data.values.compact.join("\n")
+        options = UniformNotifier.console.is_a?(Hash) ? UniformNotifier.console : {}
+        script_attributes = options[:attributes] || {}
 
-      code = <<~CODE
-        if (typeof(console) !== 'undefined' && console.log) {
-          if (console.groupCollapsed && console.groupEnd) {
-            console.groupCollapsed(#{'Uniform Notifier'.inspect});
-            console.log(#{message.inspect});
-            console.groupEnd();
-          } else {
-            console.log(#{message.inspect});
+        code = <<~CODE
+          if (typeof(console) !== 'undefined' && console.log) {
+            if (console.groupCollapsed && console.groupEnd) {
+              console.groupCollapsed(#{'Uniform Notifier'.inspect});
+              console.log(#{message.inspect});
+              console.groupEnd();
+            } else {
+              console.log(#{message.inspect});
+            }
           }
-        }
-      CODE
+        CODE
 
-      wrap_js_association code, script_attributes
+        wrap_js_association code, script_attributes
+      end
     end
   end
 end
