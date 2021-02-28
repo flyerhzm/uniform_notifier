@@ -16,7 +16,7 @@ class UniformNotifier
         opt = UniformNotifier.sentry if UniformNotifier.sentry.is_a?(Hash)
 
         exception = Exception.new(message)
-        Sentry.capture_exception(exception, opt)
+        Sentry.capture_exception(exception, **opt)
       end
     end
   end
