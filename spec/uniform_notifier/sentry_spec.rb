@@ -12,7 +12,7 @@ RSpec.describe UniformNotifier::SentryNotifier do
   end
 
   it 'should notify sentry' do
-    expect(Sentry).to receive(:capture_exception).with(UniformNotifier::Exception.new('notify sentry'))
+    expect(Sentry).to receive(:capture_exception).with(UniformNotifier::Exception.new('notify sentry'), {})
 
     UniformNotifier.sentry = true
     UniformNotifier::SentryNotifier.out_of_channel_notify(title: 'notify sentry')
