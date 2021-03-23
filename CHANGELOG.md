@@ -1,5 +1,9 @@
 # Next Release
 
+# 1.14.2 (03/24/2021)
+
+* Fix `capture_exception` signature
+
 # 1.14.1 (02/28/2021)
 
 * Fix uninitialized constant ``UniformNotifier::SentryNotifier::Raven`` error
