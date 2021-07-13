@@ -10,12 +10,20 @@ class UniformNotifier
       protected
 
       def _out_of_channel_notify(data)
-        opt = {}
-        opt = UniformNotifier.bugsnag if UniformNotifier.bugsnag.is_a?(Hash)
-
         exception = Exception.new(data[:title])
         exception.set_backtrace(data[:backtrace]) if data[:backtrace]
-        Bugsnag.notify(exception, opt.merge(grouping_hash: data[:body] || data[:title], notification: data))
+
+        return nil if data.empty?
+
+        Bugsnag.notify(exception) do |report|
+          report.severity = "warning"
+          report.add_tab(:bullet, data)
+          report.grouping_hash = data[:body] || data[:title]
+
+          if UniformNotifier.bugsnag.is_a?(Proc)
+            UniformNotifier.bugsnag.call(report)
+          end
+        end
       end
     end
   end

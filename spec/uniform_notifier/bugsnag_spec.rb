@@ -8,47 +8,51 @@ end
 
 RSpec.describe UniformNotifier::BugsnagNotifier do
   let(:notification_data) { {} }
+  let(:report) { double('Bugsnag::Report') }
+  before do
+    allow(report).to receive(:severity=)
+    allow(report).to receive(:add_tab)
+    allow(report).to receive(:grouping_hash=)
+  end
   it 'should not notify bugsnag' do
     expect(Bugsnag).not_to receive(:notify)
     UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
   end
   context 'with string notification' do
-    let(:notification_data) { { user: 'user', title: 'notify bugsnag', url: 'URL', body: 'something' } }
-
-    it 'should notify bugsnag' do
-      expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new(notification_data[:title]),
-        grouping_hash: notification_data[:body],
-        notification: notification_data
-      )
-
-      UniformNotifier.bugsnag = true
-      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
-    end
-
-    it 'should notify bugsnag with option' do
-      expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new(notification_data[:title]),
-        foo: :bar,
-        grouping_hash: notification_data[:body],
-        notification: notification_data
-      )
-
-      UniformNotifier.bugsnag = { foo: :bar }
-      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
-    end
-  end
-  context 'with hash notification' do
     let(:notification_data) { 'notify bugsnag' }
 
     it 'should notify bugsnag' do
       expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new('notify bugsnag'),
-        grouping_hash: 'notify bugsnag',
-        notification: {
-          title: 'notify bugsnag'
-        }
-      )
+        UniformNotifier::Exception.new(notification_data)
+      ).and_yield(report)
+      expect(report).to receive(:severity=).with('warning')
+      expect(report).to receive(:add_tab).with(:bullet, title: notification_data)
+      expect(report).to receive(:grouping_hash=).with(notification_data)
+
+      UniformNotifier.bugsnag = true
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
+
+    it 'should notify bugsnag with additional report configuration' do
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new(notification_data)
+      ).and_yield(report)
+      expect(report).to receive(:meta_data=).with(foo: :bar)
+
+      UniformNotifier.bugsnag = ->(report) { report.meta_data = { foo: :bar } }
+      UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
+    end
+  end
+  context 'with hash notification' do
+    let(:notification_data) { { user: 'user', title: 'notify bugsnag', url: 'URL', body: 'something' } }
+
+    it 'should notify bugsnag' do
+      expect(Bugsnag).to receive(:notify).with(
+        UniformNotifier::Exception.new(notification_data[:title])
+      ).and_yield(report)
+      expect(report).to receive(:severity=).with('warning')
+      expect(report).to receive(:add_tab).with(:bullet, notification_data)
+      expect(report).to receive(:grouping_hash=).with(notification_data[:body])
 
       UniformNotifier.bugsnag = true
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
@@ -56,15 +60,11 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
 
     it 'should notify bugsnag with option' do
       expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new('notify bugsnag'),
-        foo: :bar,
-        grouping_hash: 'notify bugsnag',
-        notification: {
-          title: 'notify bugsnag'
-        }
-      )
+        UniformNotifier::Exception.new(notification_data[:title])
+      ).and_yield(report)
+      expect(report).to receive(:meta_data=).with(foo: :bar)
 
-      UniformNotifier.bugsnag = { foo: :bar }
+      UniformNotifier.bugsnag = ->(report) { report.meta_data = { foo: :bar } }
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
     end
   end
