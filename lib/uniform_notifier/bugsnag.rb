@@ -16,7 +16,7 @@ class UniformNotifier
         return nil if data.empty?
 
         Bugsnag.notify(exception) do |report|
-          report.severity = "warning"
+          report.severity = 'warning'
           report.add_tab(:bullet, data)
           report.grouping_hash = data[:body] || data[:title]
 
