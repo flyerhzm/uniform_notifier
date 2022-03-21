@@ -1,5 +1,10 @@
 # Next Release
 
+# 1.15.0 (03/21/2022)
+
+* Fix bugsnag notifications
+* Improve appsignal message
+
 # 1.14.2 (03/24/2021)
 
 * Fix `capture_exception` signature
@@ -11,7 +16,7 @@
 # 1.14.0 (02/26/2021)
 
 * Add AppSignal integration
-* Fix UniformNotifier::Raise.active? when .rails= receives a false value
+* Fix `UniformNotifier::Raise.active?` when `.rails=` receives a false value
 
 ## 1.13.0 (10/05/2019)
 
