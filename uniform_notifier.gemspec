@@ -32,4 +32,5 @@ Gem::Specification.new do |s|
     s.metadata['source_code_uri'] = 'https://github.com/flyerhzm/uniform_notifier'
     s.metadata['bug_tracker_uri'] = 'https://github.com/flyerhzm/uniform_notifier/issues'
   end
+s.metadata['rubygems_mfa_required'] = 'true'
 end
