@@ -26,7 +26,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
         UniformNotifier::Exception.new(notification_data)
       ).and_yield(report)
       expect(report).to receive(:severity=).with('warning')
-      expect(report).to receive(:add_tab).with(:bullet, title: notification_data)
+      expect(report).to receive(:add_tab).with(:bullet, { title: notification_data })
       expect(report).to receive(:grouping_hash=).with(notification_data)
 
       UniformNotifier.bugsnag = true
@@ -37,7 +37,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
       expect(Bugsnag).to receive(:notify).with(
         UniformNotifier::Exception.new(notification_data)
       ).and_yield(report)
-      expect(report).to receive(:meta_data=).with(foo: :bar)
+      expect(report).to receive(:meta_data=).with({ foo: :bar })
 
       UniformNotifier.bugsnag = ->(report) { report.meta_data = { foo: :bar } }
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)
@@ -62,7 +62,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
       expect(Bugsnag).to receive(:notify).with(
         UniformNotifier::Exception.new(notification_data[:title])
       ).and_yield(report)
-      expect(report).to receive(:meta_data=).with(foo: :bar)
+      expect(report).to receive(:meta_data=).with({ foo: :bar })
 
       UniformNotifier.bugsnag = ->(report) { report.meta_data = { foo: :bar } }
       UniformNotifier::BugsnagNotifier.out_of_channel_notify(notification_data)

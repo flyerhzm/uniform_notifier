@@ -19,7 +19,7 @@ RSpec.describe UniformNotifier::AirbrakeNotifier do
   end
 
   it 'should notify airbrake' do
-    expect(Airbrake).to receive(:notify).with(UniformNotifier::Exception.new('notify airbrake'), foo: :bar)
+    expect(Airbrake).to receive(:notify).with(UniformNotifier::Exception.new('notify airbrake'), { foo: :bar })
 
     UniformNotifier.airbrake = { foo: :bar }
     UniformNotifier::AirbrakeNotifier.out_of_channel_notify('notify airbrake')

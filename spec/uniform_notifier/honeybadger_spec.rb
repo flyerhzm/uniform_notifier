@@ -19,7 +19,7 @@ RSpec.describe UniformNotifier::HoneybadgerNotifier do
   end
 
   it 'should notify honeybadger' do
-    expect(Honeybadger).to receive(:notify).with(UniformNotifier::Exception.new('notify honeybadger'), foo: :bar)
+    expect(Honeybadger).to receive(:notify).with(UniformNotifier::Exception.new('notify honeybadger'), { foo: :bar })
 
     UniformNotifier.honeybadger = { foo: :bar }
     UniformNotifier::HoneybadgerNotifier.out_of_channel_notify('notify honeybadger')
