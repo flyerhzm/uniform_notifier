@@ -12,7 +12,7 @@ jobs:
       matrix:
         ruby:
           - 2.7
-          - 3.0
+          - '3.0'
           - 3.1
     steps:
       - name: Checkout code
