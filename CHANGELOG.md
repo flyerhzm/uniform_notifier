@@ -1,5 +1,10 @@
 # Next Release
 
+# 1.16.0 (03/24/2022)
+
+* Drop Growl support
+* Move CI from travis to github actions
+
 # 1.15.0 (03/21/2022)
 
 * Fix bugsnag notifications
