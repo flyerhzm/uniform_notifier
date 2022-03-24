@@ -1,7 +1,6 @@
 # UniformNotifier
 
-[![Build
-Status](https://secure.travis-ci.org/flyerhzm/uniform_notifier.svg)](http://travis-ci.org/flyerhzm/uniform_notifier)
+[![CI](https://github.com/flyerhzm/uniform_notifier/actions/workflows/ci.yml/badge.svg)](https://github.com/flyerhzm/uniform_notifier/actions/workflows/ci.yml)
 [![AwesomeCode Status for flyerhzm/uniform_notifier](https://awesomecode.io/projects/3e29a7de-0b37-4ecf-b06d-410ebf815174/status)](https://awesomecode.io/repos/flyerhzm/uniform_notifier)
 
 uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, xmpp, airbrake, honeybadger and AppSignal.
