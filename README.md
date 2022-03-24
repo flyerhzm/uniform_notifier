@@ -4,21 +4,13 @@
 Status](https://secure.travis-ci.org/flyerhzm/uniform_notifier.svg)](http://travis-ci.org/flyerhzm/uniform_notifier)
 [![AwesomeCode Status for flyerhzm/uniform_notifier](https://awesomecode.io/projects/3e29a7de-0b37-4ecf-b06d-410ebf815174/status)](https://awesomecode.io/repos/flyerhzm/uniform_notifier)
 
-uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, growl, xmpp, airbrake, honeybadger and AppSignal.
+uniform_notifier is extracted from [bullet][0], it gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, xmpp, airbrake, honeybadger and AppSignal.
 
 ## Install
 
 ### install directly
 
     gem install uniform_notifier
-
-if you want to notify by growl < v1.3, you should install ruby-growl first
-
-    gem install ruby-growl
-
-if you want to notify by growl v1.3+, you should install ruby_gntp first
-
-    gem install ruby_gntp
 
 if you want to notify by xmpp, you should install xmpp4r first
 
@@ -56,13 +48,13 @@ if you want to notify by terminal-notifier, you must install it first
 
     gem "uniform_notifier"
 
-  you should add ruby-growl, ruby_gntp, xmpp4r, airbrake, bugsnag, honeybadger, slack-notifier, terminal-notifier gem if you want.
+  you should add xmpp4r, airbrake, bugsnag, honeybadger, slack-notifier, terminal-notifier gem if you want.
 
 ## Usage
 
 There are two types of notifications,
 one is <code>inline_notify</code>, for javascript alert and javascript console notifiers, which returns a string and will be combined,
-the other is <code>out_of_channel_notify</code>, for rails logger, customized logger, growl and xmpp, which doesn't return anything, just send the message to the notifiers.
+the other is <code>out_of_channel_notify</code>, for rails logger, customized logger, xmpp, which doesn't return anything, just send the message to the notifiers.
 
 By default, all notifiers are disabled, you should enable them first.
 
@@ -120,11 +112,6 @@ logger = File.open('notify.log', 'a+')
 logger.sync = true
 UniformNotifier.customized_logger = logger
 
-# growl without password
-UniformNotifier.growl = true
-# growl with passowrd
-UniformNotifier.growl = { :password => 'growl password' }
-
 # xmpp
 UniformNotifier.xmpp = { :account => 'sender_account@jabber.org',
                          :password => 'password_for_jabber',
@@ -146,7 +133,7 @@ UniformNotifier.raise = false # don't raise errors
 After that, you can enjoy the notifiers, that's cool!
 
 ```ruby
-# the notify message will be notified to rails logger, customized logger, growl or xmpp.
+# the notify message will be notified to rails logger, customized logger or xmpp.
 UniformNotifier.active_notifiers.each do |notifier|
   notifier.out_of_channel_notify("customize message")
 end
@@ -160,18 +147,6 @@ UniformNotifier.active_notifiers.each do |notifier|
 end
 javascript_str = responses.join("\n")
 ```
-
-## Growl Support
-
-To get Growl support up-and-running, follow the steps below:
-
-* For Growl < v1.3, install the ruby-growl gem: <code>gem install ruby-growl</code>
-* For Growl v1.3+, install the ruby_gntp gem: <code>gem install ruby_gntp</code>
-* Open the Growl preference pane in Systems Preferences
-* Click the "Network" tab
-* Make sure both "Listen for incoming notifications" and "Allow remote application registration" are checked. *Note*: If you set a password, you will need to set <code>UniformNotifier.growl_password = { :password => 'growl password' }</code> in the config file.
-* Restart Growl ("General" tab -> Stop Growl -> Start Growl)
-* Boot up your application. UniformNotifier will automatically send a Growl notification when Growl is turned on. If you do not see it when your application loads, make sure it is enabled in your initializer and double-check the steps above.
 
 ## XMPP/Jabber Support
 

@@ -4,7 +4,6 @@ require 'uniform_notifier/base'
 require 'uniform_notifier/errors'
 require 'uniform_notifier/javascript_alert'
 require 'uniform_notifier/javascript_console'
-require 'uniform_notifier/growl'
 require 'uniform_notifier/honeybadger'
 require 'uniform_notifier/xmpp'
 require 'uniform_notifier/rails_logger'
@@ -22,7 +21,6 @@ class UniformNotifier
   AVAILABLE_NOTIFIERS = %i[
     alert
     console
-    growl
     honeybadger
     xmpp
     rails_logger
@@ -40,7 +38,6 @@ class UniformNotifier
   NOTIFIERS = [
     JavascriptAlert,
     JavascriptConsole,
-    Growl,
     HoneybadgerNotifier,
     Xmpp,
     RailsLogger,
@@ -63,11 +60,6 @@ class UniformNotifier
 
     def active_notifiers
       NOTIFIERS.select(&:active?)
-    end
-
-    undef growl=
-    def growl=(growl)
-      UniformNotifier::Growl.setup_connection(growl)
     end
 
     undef xmpp=
