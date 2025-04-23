@@ -13,7 +13,8 @@ RSpec.describe UniformNotifier::Slack do
   context 'configuration' do
     context 'no webhook_url is given' do
       it 'should raise an error' do
-        expect { UniformNotifier.slack = {} }.to raise_error(UniformNotifier::NotificationError)
+        expect { UniformNotifier.slack = {} }
+          .to raise_error(UniformNotifier::NotificationError)
       end
 
       it 'should not notify slack' do

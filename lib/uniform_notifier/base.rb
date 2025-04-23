@@ -33,7 +33,8 @@ class UniformNotifier
 
       def wrap_js_association(code, attributes = {})
         attributes = { type: 'text/javascript' }.merge(attributes || {})
-        attributes_string = attributes.map { |k, v| "#{k}=#{v.to_s.inspect}" }.join(' ')
+        attributes_string = attributes.map { |k, v| "#{k}=#{v.to_s.inspect}" }
+                                      .join(' ')
 
         <<~CODE
           <script #{attributes_string}>/*<![CDATA[*/

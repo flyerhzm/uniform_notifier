@@ -22,9 +22,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
     let(:notification_data) { 'notify bugsnag' }
 
     it 'should notify bugsnag' do
-      expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new(notification_data)
-      ).and_yield(report)
+      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new(notification_data)).and_yield(report)
       expect(report).to receive(:severity=).with('warning')
       expect(report).to receive(:add_tab).with(:bullet, { title: notification_data })
       expect(report).to receive(:grouping_hash=).with(notification_data)
@@ -34,9 +32,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
     end
 
     it 'should notify bugsnag with additional report configuration' do
-      expect(Bugsnag).to receive(:notify).with(
-        UniformNotifier::Exception.new(notification_data)
-      ).and_yield(report)
+      expect(Bugsnag).to receive(:notify).with(UniformNotifier::Exception.new(notification_data)).and_yield(report)
       expect(report).to receive(:meta_data=).with({ foo: :bar })
 
       UniformNotifier.bugsnag = ->(report) { report.meta_data = { foo: :bar } }
