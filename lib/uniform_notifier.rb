@@ -16,6 +16,7 @@ require 'uniform_notifier/appsignal'
 require 'uniform_notifier/slack'
 require 'uniform_notifier/raise'
 require 'uniform_notifier/terminal_notifier'
+require 'uniform_notifier/opentelemetry'
 
 class UniformNotifier
   AVAILABLE_NOTIFIERS = %i[
@@ -33,6 +34,7 @@ class UniformNotifier
     sentry
     appsignal
     terminal_notifier
+    opentelemetry
   ].freeze
 
   NOTIFIERS = [
@@ -49,7 +51,8 @@ class UniformNotifier
     Slack,
     SentryNotifier,
     AppsignalNotifier,
-    TerminalNotifier
+    TerminalNotifier,
+    OpenTelemetryNotifier
   ].freeze
 
   class NotificationError < StandardError
