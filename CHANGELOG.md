@@ -1,24 +1,28 @@
 # Next Release
 
-# 1.16.0 (03/24/2022)
+## 1.17.0 (05/07/2025)
+
+* Introduce opentelemetry notifier
+
+## 1.16.0 (03/24/2022)
 
 * Drop Growl support
 * Move CI from travis to github actions
 
-# 1.15.0 (03/21/2022)
+## 1.15.0 (03/21/2022)
 
 * Fix bugsnag notifications
 * Improve appsignal message
 
-# 1.14.2 (03/24/2021)
+## 1.14.2 (03/24/2021)
 
 * Fix `capture_exception` signature
 
-# 1.14.1 (02/28/2021)
+## 1.14.1 (02/28/2021)
 
 * Fix uninitialized constant ``UniformNotifier::SentryNotifier::Raven`` error
 
-# 1.14.0 (02/26/2021)
+## 1.14.0 (02/26/2021)
 
 * Add AppSignal integration
 * Fix `UniformNotifier::Raise.active?` when `.rails=` receives a false value
