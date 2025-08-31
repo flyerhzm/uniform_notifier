@@ -1,5 +1,10 @@
 # Next Release
 
+## 1.18.0 (08/31/2025)
+
+* Update `Honeybadger.notify` signature to match new keyword style
+* Drop 2.7 support
+
 ## 1.17.0 (05/07/2025)
 
 * Introduce opentelemetry notifier
