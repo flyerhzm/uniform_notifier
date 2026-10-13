@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['flyerhzm@gmail.com']
   s.homepage    = 'http://rubygems.org/gems/uniform_notifier'
   s.summary     = 'uniform notifier for rails logger, customized logger, javascript alert, javascript console and xmpp'
-  s.description = 'uniform notifier for rails logger, customized logger, javascript alert, javascript console and xmpp'
+  s.description = 'uniform_notifier gives you the ability to send notification through rails logger, customized logger, javascript alert, javascript console, xmpp, airbrake, honeybadger, AppSignal and more'
   s.license     = 'MIT'
 
   s.required_ruby_version = '>= 2.3'
