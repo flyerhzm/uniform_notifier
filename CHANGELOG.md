@@ -1,5 +1,9 @@
 # Next Release
 
+## 1.18.1 (10/13/2026)
+
+* Reduce gem size by excluding unnecessary file
+
 ## 1.18.0 (08/31/2025)
 
 * Update `Honeybadger.notify` signature to match new keyword style
